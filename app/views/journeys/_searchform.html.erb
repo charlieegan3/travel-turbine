@@ -6,10 +6,11 @@
   <%= f.label :destination, 'Destination' %>:
   <%= f.select :origin, @origin %><br />
   <%= f.label :date, 'Date' %>:
-  <%= date_select(@journey, :date) %>   <!-- PICK DATE WITH A DROP-DOWN OR JQUERY CALENDAR -->
+  <%= date_select(@journey, :date) %><br />  <!-- PICK DATE WITH A DROP-DOWN OR JQUERY CALENDAR -->
+  <p>Click 'Create journey' To generate a list of options:</p>
   <%= f.submit %>
 <% end %>
 
-
+<br />
 
 <%= link_to 'Back', :root, {:class=>"newpage_btn"} %>

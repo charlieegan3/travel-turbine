@@ -2,18 +2,15 @@ class JourneysController < ApplicationController
 
 	def new
 		@journey = Journey.new
-		@origin = ["Place 1", "Place 2"]  # Using @origin for both origin and destination fields.
+		@origin = Location.all.pluck("name")  # Using @origin for both origin and destination fields.
 		@date = Date.new
-
-		#@bus = bus(params[:origin, :destination, :date])
-		#@train = train(params[:origin, :destination, :date])
-		#@plane = plane(params[:origin, :destination, :date])
 	end
 
 
 	def create
+		# Take the stuff selected in the form, and create a new 'journey' with it.
 		@journey = best_journey(params[:origin], params[:destination], params[:date])
-		
+
 		if @journey.save
 			redirect_to :root
 			# or display journey...
