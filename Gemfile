@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#to create seed data
+gem "seed_dumper", "~> 0.1.3"
+
 #using for parsing html data from get requests
 gem "nokogiri", "~> 1.6.0"
 
