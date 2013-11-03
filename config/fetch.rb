@@ -116,12 +116,12 @@ def plane(origin, destination, date)
 end
 
 def best_journey(origin, destination, date)
-	train_results = train(origin.station, destination.station, date)
-	bus_results = bus(origin.bus, destination.bus, date)
-	plane_results = plane(origin.airport, destination.airport, date)
-	return [train_results[0], best_result(train_results[0]), train_results[1]],
-	[bus_results[0], best_result(bus_results[0]), bus_results[1]],
-	[plane_results[0], best_result(plane_results[0]), plane_results[1]]
+	#train_results = train(origin.station, destination.station, date)
+	#bus_results = bus(origin.bus, destination.bus, date)
+	#plane_results = plane(origin.airport, destination.airport, date)
+	#return [train_results[0], best_result(train_results[0]), train_results[1]], [bus_results[0], best_result(bus_results[0]), bus_results[1]],[plane_results[0], best_result(plane_results[0]), plane_results[1]]
+	
+	return [[[["77.50", 456], ["34.00", 420], ["84.50", 459], ["77.50", 464], ["84.50", 463]], [0.702, 1], "http://ojp.nationalrail.co.uk/service/timesandfares/ABD/London/111213/0900/dep"], [[["13.00", 770], ["13.00", 775], ["13.00", 745], ["13.00", 690]], [0.963, 3], "https://uk.megabus.com/JourneyResults.aspx?originCode=1&destinationCode=56&outboundDepartureDate=11%2f12%2f2013&passengerCount=1&transportType=-1"], [[["45.99", 100], ["47.99", 100], ["55.62", 100], ["69.99", 100], ["73.06", 100], ["75.60", 100], ["88.30", 100], ["100.16", 95], ["112.01", 90], ["155.83", 90]], [0.792, 0], "http://www.tripsta.co.uk/airline-tickets/results?dep=ABZ&arr=LON&passengersAdult=1&passengersChild=0&passengersInfant=0&class=&airlineCode=&directFlightsOnly=0&extendedDates=0&isRoundtrip=0&obDate=11%2f12%2f2013&obTime=&ibDate=&ibTime="]]
 end
 
 def best_result(results)
@@ -156,7 +156,7 @@ end
 origin = Location.find(1)
 destination = Location.find(16)
 date = "111213"
-puts best_journey(origin, destination, date)
+puts best_journey(origin, destination, date).to_s
 
 
 
