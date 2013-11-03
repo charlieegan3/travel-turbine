@@ -5,7 +5,7 @@ TravelPlanner::Application.routes.draw do
   root to: "static#index"
 
   get '/journey/new', to: 'journeys#new'    # For some reason "resources :journeys"  isn't activating the new method.
-
+  get '/search', to: 'static#search' 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
