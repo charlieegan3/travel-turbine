@@ -8,22 +8,35 @@
 
 	<div id="navbar">
 		<!-- links -->
-		<a href="">Popular locations</a>
+		<ul>
+			<li><a href="">Popular locations</a></li>
+			<li><a href="">Create a journey</a></li>
+		</ul>
 	</div>
 
 	<div id="userbar">
 		<!-- User info, avatar, log in/out links, etc. -->
-		<a href="">Sign in</a>
 	</div>
 
 <!-- END DIV 'top' -->	
 </div>
 
-<h2> Welcome [username]! </h2>
+<h2> Welcome! </h2>
 <img src="http://wiki.openstreetmap.org/w/images/thumb/e/e7/Bus-icon.svg/165px-Bus-icon.svg.png"></img>
 
 <div id="main">
 	<p> Welcome to Travel Planner(tm). This tool helps you plan trips and compare prices for various travel methods, whether it's by bus or plane. To get started, click on 'Create a new trip'. </p>
+
+	<a href="/journey/new">Create a new trip</a>
+
+	<h3> Example trip data: </h3>
+	<table id="examples">
+		<tr>Price:<tr>
+		<tr>Duration:</tr>
+		<td><%= @buses[1][0] %></td>
+		<td><%= @buses[1][1] %></td>
+	</table>
+
 
 	<p> Supported travel methods: </p>
 	<ul>

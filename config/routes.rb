@@ -1,8 +1,10 @@
 TravelPlanner::Application.routes.draw do
   
-  #resources :trips     --> for future use.
+  resources :journeys
 
   root to: "static#index"
+
+  get '/journey/new', to: 'journeys#new'    # For some reason "resources :journeys"  isn't activating the new method.
 
 
   # The priority is based upon order of creation: first created -> highest priority.
