@@ -2,7 +2,11 @@ class JourneysController < ApplicationController
 
 	def new
 		@journey = Journey.new
-		render '_searchform'
+		@origin = Location.all.pluck("name")
+		@destination = Location.all.pluck("name")
+		@date = Date.new
+
+	# When the form is working:	
 	#	@journey.origin = params[:origin]
 	#	@journey.destination = params[:destination]
 	#	@journey.methods = params[:methods]
@@ -12,7 +16,9 @@ class JourneysController < ApplicationController
 	def create
 		if @journey.save
 			redirect_to :root
+			# or display journey...
 		end
+		# else, throw error
 	end
 
 	def search(method, origin, destination, date)   # Search for possible journeys - just calls bus(), train(), plane().

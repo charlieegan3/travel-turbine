@@ -1,9 +1,9 @@
 <%= form_for @journey do |f| %>
   <%= f.label :origin, 'Origin' %>:
-  <%= f.collection_select :origin %><br />
+  <%= f.collection_select :origin, @origin, :id, :name, :prompt => true %><br />
   <%= f.label :destination, 'Destination' %>:
-  <%= f.collection_select :destination %><br />
+  <%= f.collection_select :origin, @origin, :id, :name, :prompt => true %><br />
   <%= f.label :date, 'Date' %>:
-  <%= f.text_field :date %><br />  <!-- SHOULD DO THIS WITH A DROP-DOWN OR JQUERY CALENDAR -->
+ <!-- PICK DATE WITH A DROP-DOWN OR JQUERY CALENDAR -->
   <%= f.submit %>
 <% end %>
