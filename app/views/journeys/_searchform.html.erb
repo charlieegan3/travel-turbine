@@ -1,9 +1,25 @@
+<script type="text/javascript">
+	//".newpage" is a class for any button that links to a different view (which sometimes takes a while to load on slow Heroku)
+	$(document).ready(function() {
+		$(".newpage").click(function() {
+			$("body").replaceWith("<h1>LOADING...</h1>");
+		})
+	})
+</script>
+
+
+
+
 <%= form_for @journey do |f| %>
   <%= f.label :origin, 'Origin' %>:
-  <%= f.collection_select :origin, @origin, :id, :name, :prompt => true %><br />
+  <%= f.select :origin, @origin %><br />
   <%= f.label :destination, 'Destination' %>:
-  <%= f.collection_select :origin, @origin, :id, :name, :prompt => true %><br />
+  <%= f.select :origin, @origin %><br />
   <%= f.label :date, 'Date' %>:
- <!-- PICK DATE WITH A DROP-DOWN OR JQUERY CALENDAR -->
+  <%= date_select(@journey, :date) %>   <!-- PICK DATE WITH A DROP-DOWN OR JQUERY CALENDAR -->
   <%= f.submit %>
 <% end %>
+
+
+
+<%= link_to 'Back', :root, {:class=>"newpage"} %>

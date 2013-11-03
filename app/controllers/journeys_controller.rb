@@ -2,8 +2,7 @@ class JourneysController < ApplicationController
 
 	def new
 		@journey = Journey.new
-		@origin = Location.all.pluck("name")
-		@destination = Location.all.pluck("name")
+		@origin = ["Place 1", "Place 2"]  # Using @origin for both origin and destination fields.
 		@date = Date.new
 
 	# When the form is working:	
