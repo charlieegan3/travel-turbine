@@ -5,7 +5,6 @@
 #+--------------------------+
 RAILS_ENV = 'development'
 require File.expand_path('../environment', __FILE__)
-require 'net/http'
 require 'open-uri'
 
 #make a request to national rail like: train("INV", "ABD", "211113")
