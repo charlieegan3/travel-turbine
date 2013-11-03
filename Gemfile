@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 #using for parsing html data from get requests
 gem "nokogiri", "~> 1.6.0"
 
+#using to save time on the journey comparisons
+gem "descriptive-statistics", "~> 2.1.0"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 

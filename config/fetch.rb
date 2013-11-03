@@ -9,7 +9,8 @@ require 'open-uri'
 
 #make a request to national rail like: train("INV", "ABD", "211113")
 def train(origin, destination, date)
-	xml = Nokogiri::HTML(open("http://ojp.nationalrail.co.uk/service/timesandfares/#{origin}/#{destination}/#{date}/0900/dep").read)
+	url = "http://ojp.nationalrail.co.uk/service/timesandfares/#{origin}/#{destination}/#{date}/0900/dep"
+	xml = Nokogiri::HTML(open(url).read)
 	#get prices
 	price_string = xml.css('.opsingle').inner_html
 	price_string.gsub!(/\s+/, "")
@@ -33,16 +34,17 @@ def train(origin, destination, date)
 	end
 	results  = Array.new
 		prices.count().times do |count|
-		  	pair = [prices[count], durations[count]]
+		  	pair = [prices[count][1,prices[count].length], durations[count]] #rather messy way of taking out the £ at the last minute!
 			results.push(pair)
 		end
-	return results
+	return results, url
 end
 
 #make a request to megabus like: bus("49", "56", "211113")
 def bus(origin, destination, date)
 	param_date = date[0,2] + "%2f" + date[2,2] + "%2f20" + date[4,2] #megabus uses odd date formats
-	xml = Nokogiri::HTML(open("https://uk.megabus.com/JourneyResults.aspx?originCode=#{origin}&destinationCode=#{destination}&outboundDepartureDate=#{param_date}&passengerCount=1&transportType=-1").read)
+	url = "https://uk.megabus.com/JourneyResults.aspx?originCode=#{origin}&destinationCode=#{destination}&outboundDepartureDate=#{param_date}&passengerCount=1&transportType=-1"
+	xml = Nokogiri::HTML(open(url).read)
 	#get prices
 	price_string = xml.css('ul.standard>li.five>p').to_s
 	price_string.gsub!(/\s+/, "")
@@ -72,13 +74,14 @@ def bus(origin, destination, date)
 	  	pair = [prices[count], durations[count]]
 		results.push(pair)
 	end
-	return results
+	return results, url
 end
 
 #make a request to tripsta like: plane("INV", "LON", "211113")
 def plane(origin, destination, date)
 	param_date = date[0,2] + "%2f" + date[2,2] + "%2f20" + date[4,2]
-	xml= Nokogiri::HTML(open("http://www.tripsta.co.uk/airline-tickets/results?dep=#{origin}&arr=#{destination}&passengersAdult=1&passengersChild=0&passengersInfant=0&class=&airlineCode=&directFlightsOnly=0&extendedDates=0&isRoundtrip=0&obDate=#{param_date}&obTime=&ibDate=&ibTime=").read)
+	url = "http://www.tripsta.co.uk/airline-tickets/results?dep=#{origin}&arr=#{destination}&passengersAdult=1&passengersChild=0&passengersInfant=0&class=&airlineCode=&directFlightsOnly=0&extendedDates=0&isRoundtrip=0&obDate=#{param_date}&obTime=&ibDate=&ibTime="
+	xml= Nokogiri::HTML(open(url).read)
 
 	#get prices
 	price_string = xml.css("span.amount").to_s
@@ -109,9 +112,68 @@ def plane(origin, destination, date)
 	  	pair = [prices[count], durations[count]]
 		results.push(pair)
 	end
-	return results
+	return results, url
 end
 
-puts train("INV", "ABD", "211113").to_s
-puts bus("49", "56", "211113").to_s
-puts plane("INV", "LON", "211113").to_s
+def best_journey(origin, destination, date)
+	train_results = train(origin.station, destination.station, date)
+	bus_results = bus(origin.bus, destination.bus, date)
+	plane_results = plane(origin.airport, destination.airport, date)
+	return [train_results[0], best_result(train_results[0]), train_results[1]],
+	[bus_results[0], best_result(bus_results[0]), bus_results[1]],
+	[plane_results[0], best_result(plane_results[0]), plane_results[1]]
+end
+
+def best_result(results)
+	prices = Array.new
+	durations = Array.new
+	results.each do |r|
+		prices.push(r[0].to_f)
+		durations.push(r[1])
+	end
+	
+	#variables for test
+	prices_mean = DescriptiveStatistics::Stats.new(prices).mean
+	durations_mean = DescriptiveStatistics::Stats.new(durations).mean
+	
+	#adjust to scores
+	prices.count().times do |count|
+		prices[count] = (prices[count]/prices_mean)
+	end
+	durations.count().times do |count|
+		durations[count] = (durations[count]/durations_mean)
+	end
+	
+	#calc avg scores
+	scores = Array.new
+	prices.count().times do |count|
+		scores.push(DescriptiveStatistics::Stats.new([prices[count],durations[count]]).mean.round(3))
+	end
+	return scores.each_with_index.min
+end
+
+#example use
+origin = Location.find(1)
+destination = Location.find(16)
+date = "111213"
+puts best_journey(origin, destination, date)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

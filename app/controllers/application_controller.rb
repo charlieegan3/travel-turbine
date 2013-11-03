@@ -108,9 +108,9 @@ class ApplicationController < ActionController::Base
 		return results
 	end
 
-	def best_journey()
+	def best_journey(origin_id, destination_id, date)
 		#code here to pick the best options and return the three best results
-		
+
 		#can use other methods in the meantime e.g. from views and contollers
 		#puts train("INV", "ABD", "211113").to_s
 		#puts bus("49", "56", "211113").to_s
