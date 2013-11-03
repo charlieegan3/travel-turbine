@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  origin: MyString
+  destination: MyString
+  train_result: MyString
+  bus_result: MyString
+  plane: MyString
+
+two:
+  origin: MyString
+  destination: MyString
+  train_result: MyString
+  bus_result: MyString
+  plane: MyString
