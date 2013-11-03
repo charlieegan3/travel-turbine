@@ -5,14 +5,15 @@ class JourneysController < ApplicationController
 		@origin = ["Place 1", "Place 2"]  # Using @origin for both origin and destination fields.
 		@date = Date.new
 
-	# When the form is working:	
-	#	@journey.origin = params[:origin]
-	#	@journey.destination = params[:destination]
-	#	@journey.methods = params[:methods]
+		#@bus = bus(params[:origin, :destination, :date])
+		#@train = train(params[:origin, :destination, :date])
+		#@plane = plane(params[:origin, :destination, :date])
 	end
 
 
 	def create
+		@journey = best_journey(params[:origin], params[:destination], params[:date])
+		
 		if @journey.save
 			redirect_to :root
 			# or display journey...
