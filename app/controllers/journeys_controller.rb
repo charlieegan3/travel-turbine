@@ -17,9 +17,9 @@ class JourneysController < ApplicationController
 		#@journey.save #to stop creating uneeded elements in testing
 
 		#vars for the view
-		year = Integer("20" + date[4,2])
-		mon = Integer(date[1,2])
-		day = Integer(date[0,2])
+		year = Integer("20" + @journey.date[4,2])
+		mon = Integer(@journey.date[2,2])
+		day = Integer(@journey.date[0,2])
 		@date = DateTime.new(year, mon, day).to_date
 
 		@train_list = @journey.train_result[0]

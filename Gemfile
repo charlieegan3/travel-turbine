@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#datepickers will be the death of me
+gem 'bootstrap-datepicker-rails'
+
 # Devise for user accounts
 gem 'devise'
 

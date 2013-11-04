@@ -3,12 +3,12 @@
   </div>
   <div class="panel-body">
   	<p style="line-height:200%">On your journey from 
-  	<span class="label label-info" style="font-size: 15px"><%= @journey.origin %></span>
-  	 to <span class="label label-info" style="font-size: 15px"><%= @journey.destination %></span>
-  	 on <span class="label label-info" style="font-size: 15px"><%= @date.strftime('%d/%m/%Y') %></span>
-  	 the best overall result was by <span class="label label-success" style="font-size: 15px"><%= @journey.best_result[1] %></span>, costs 
-  	 <span class="label label-success" style="font-size: 15px">£<%= @journey.best_result[0][0] %></span> and takes
-  	 <span class="label label-success" style="font-size: 15px"><%= distance_of_time_in_words(Time.now, Time.now + @journey.best_result[0][1].minutes) %></span>.</p>
+  	<span class="label label-info" style="font-size: 18px"><%= @journey.origin %></span>
+  	 to <span class="label label-info" style="font-size: 18px"><%= @journey.destination %></span>
+  	 on <span class="label label-info" style="font-size: 18px"><%= @date.strftime('%d/%m/%Y') %></span>
+  	 the best overall result was by <span class="label label-success" style="font-size: 18px"><%= @journey.best_result[1] %></span>, costs 
+  	 <span class="label label-success" style="font-size: 18px">£<%= @journey.best_result[0][0] %></span> and takes
+  	 <span class="label label-success" style="font-size: 18px"><%= distance_of_time_in_words(Time.now, Time.now + @journey.best_result[0][1].minutes) %></span>.</p>
 
   	 <p>Click <%= link_to("here", @best_link)%> to buy this ticket now!</p>
 

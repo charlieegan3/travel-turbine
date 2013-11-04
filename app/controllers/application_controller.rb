@@ -114,13 +114,13 @@ def plane(origin, destination, date)
 end
 
 def best_journey(origin, destination, date)
-	#train_results = train(origin.station, destination.station, date)
-	#bus_results = bus(origin.bus, destination.bus, date)
-	#plane_results = plane(origin.airport, destination.airport, date)
+	train_results = train(origin.station, destination.station, date)
+	bus_results = bus(origin.bus, destination.bus, date)
+	plane_results = plane(origin.airport, destination.airport, date)
 	
-	train_results = [[["146.50", 456], ["45.50", 419], ["146.50", 458], ["142.00", 464], ["142.00", 463]], "http://ojp.nationalrail.co.uk/service/timesandfares/ABD/London/211113/0900/dep"]
-	bus_results = [[["13.00", 770], ["13.00", 775], ["13.00", 745], ["13.00", 690]], "https://uk.megabus.com/JourneyResults.aspx?originCode=1&destinationCode=56&outboundDepartureDate=21%2f11%2f2013&passengerCount=1&transportType=-1"]
-	plane_results = [[["55.62", 100], ["59.99", 100], ["64.99", 100], ["70.99", 80], ["73.05", 100], ["85.99", 90], ["88.29", 100], ["88.29", 100], ["99.99", 85], ["100.14", 95]], "http://www.tripsta.co.uk/airline-tickets/results?dep=ABZ&arr=LON&passengersAdult=1&passengersChild=0&passengersInfant=0&class=&airlineCode=&directFlightsOnly=0&extendedDates=0&isRoundtrip=0&obDate=21%2f11%2f2013&obTime=&ibDate=&ibTime="]
+	#train_results = [[["146.50", 456], ["45.50", 419], ["146.50", 458], ["142.00", 464], ["142.00", 463]], "http://ojp.nationalrail.co.uk/service/timesandfares/ABD/London/211113/0900/dep"]
+	#bus_results = [[["13.00", 770], ["13.00", 775], ["13.00", 745], ["13.00", 690]], "https://uk.megabus.com/JourneyResults.aspx?originCode=1&destinationCode=56&outboundDepartureDate=21%2f11%2f2013&passengerCount=1&transportType=-1"]
+	#plane_results = [[["55.62", 100], ["59.99", 100], ["64.99", 100], ["70.99", 80], ["73.05", 100], ["85.99", 90], ["88.29", 100], ["88.29", 100], ["99.99", 85], ["100.14", 95]], "http://www.tripsta.co.uk/airline-tickets/results?dep=ABZ&arr=LON&passengersAdult=1&passengersChild=0&passengersInfant=0&class=&airlineCode=&directFlightsOnly=0&extendedDates=0&isRoundtrip=0&obDate=21%2f11%2f2013&obTime=&ibDate=&ibTime="]
 	
 	all_journeys = Array.new
 	train_results[0].each do |r|

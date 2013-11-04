@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="angularjs-starter">
+
+  <head lang="en">
+        
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="http://mgcrea.github.com/angular-strap/css/prettify.css" rel="stylesheet">
+    <link href="http://mgcrea.github.com/angular-strap/vendor/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script src="http://mgcrea.github.com/angular-strap/js/angular-strap.js"></script>
+    <script src="http://mgcrea.github.com/angular-strap/vendor/bootstrap-datepicker.js"></script>
+    
+    <script>
+    	var app = angular.module('angularjs-starter', ['$strap.directives']);
+    	
+    </script>
+  </head>
+  
+  <body>
+    <div class="control-group input-append">
+      <input id="inputDatepicker" class="input-small" type="text" ng-model="datepicker.date" data-date-format="dd/mm/yy" bs-datepicker>
+      <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+    </div>
+  </body>
+
+</html>

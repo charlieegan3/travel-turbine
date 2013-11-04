@@ -1,19 +1,14 @@
-<div id="top_container">
-	<div id="navbar">
-		<!-- link_to devise, :action => "registrations#new", {:class => "topbar_link"}  -->
-		<!-- Need to figure out how to reference Devise methods with link_to -->
-		<a href="www.google.com" class="topbar_link">Do something else!</a>
-	</div>
-	<div id="userbar">
-		<img src="http://www.google.com/profiles/c/photos/public/AIbEiAIAAABDCPOQ5eDix9yDaCILdmNhcmRfcGhvdG8qKDk5ZjAyNzIzYjBhOGY5MThlNzAzYWFiMDZlMzViYTg5NzBkNTFmMmYwAYF_Dsaq-5EePDwGuMD4jCC-v74T"></img>
-		<a href="/users/sign_up" class="topbar_link">Sign Up!</a>
-		<a href="/users/sign_in" class="topbar_link">Log in!</a>
-		<a href="/users/sign_out" class="topbar_link">Log out!</a>
-	</div>
-</div>
-
 <div class="container">
-      <div class="masthead"></div>
+        <div class="header">
+        <ul class="nav nav-pills pull-right">
+        <% if current_user.nil? %>
+        	<li><a href="/users/sign_up" class="topbar_link">Sign Up!</a></li>
+          <li><a href="/users/sign_in" class="topbar_link">Log in!</a></li>
+        <% else %>
+        	<li><a href="/users/sign_out" class="topbar_link">Log out!</a></li>
+        <% end %>
+        </ul>
+      </div>
       <div class="jumbotron">
         <div style class="alert alert-dismissable visible-xs alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -41,13 +36,23 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <input id="datepicker" placeholder="Date" class="form-control" type="text">
+          <div class="col-md-5"></div>
+          <div class="col-md-2">
+            <input id="datepicker" type="text" class="form-control" placeholder="Date" style="text-align: center;" data-behaviour='datepicker'>
+			<script type="text/javascript">
+			  $(document).ready(function(){
+			    $('[data-behaviour~=datepicker]').datepicker({
+			    format: "dd/mm/yy",
+			    todayBtn: "linked",
+			    autoclose: true
+				});
+			  })
+			</script>
             <a id="searchbutton" class="btn btn-primary btn-sm" style="margin-top: 5px;">Search</a>
           </div>
-          <div class="col-md-4"></div>
+          <div class="col-md-5"></div>
         </div>
+        <div id="error" class="alert alert-dismissable alert-danger"></div>
         <p></p>
         <div id="results">
         <!-- results go here! -->
@@ -57,14 +62,34 @@
     </div>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#searchbutton").click(function() {
-			var origin = document.getElementById("originselect").value;
-			var destination = document.getElementById("destinationselect").value;
-			var query = "journey/new?origin="+origin+"&destination="+destination+"&date=211113"
+	$( "#error" ).hide();
+	$("#searchbutton").click(function() {
+		var origin = document.getElementById("originselect").value;
+		var destination = document.getElementById("destinationselect").value;
+		var date = document.getElementById("datepicker").value;
+		date = date.replace(/\//, '');
+		date = date.replace(/\//, ''); //no idea why it's not like ruby in this instance, i'm really too tired of this to work out why
+
+		if (origin == destination)
+  		{
+  			$( "#error" ).show();
+  			$("#error").html("Take a quick look, you might be about to waste some money, that, or you like going round in circles, either way, we can't allow it.");
+  		}
+  		else if (date.length < 6)
+  		{
+  			$( "#error" ).show();
+  			$("#error").html("You might be dreading the journey but you've got to go sometime! Pick a date and try again.");
+  		}
+		else
+  		{
+  			$( "#error" ).hide();
+  			$("#results").html('<img src="http://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif">')
+  			var query = "journey/new?origin="+origin+"&destination="+destination+"&date="+date
  			$("#results").load(query)
+ 			$("html, body").animate({ scrollTop: $('#results').offset().top }, 1000);
+  		}
+			
 		})
-	})
 </script>
 
 
