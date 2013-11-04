@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Devise for user accounts
 gem 'devise'
 
+# Bcrypt for password hashing (Devise uses it by default)
+gem 'bcrypt-ruby'
+
 #to create seed data
 gem "seed_dumper", "~> 0.1.3"
 
