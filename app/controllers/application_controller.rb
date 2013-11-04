@@ -119,16 +119,38 @@ def best_journey(origin, destination, date)
 	#plane_results = plane(origin.airport, destination.airport, date)
 	#return [train_results[0], best_result(train_results[0]), train_results[1]], [bus_results[0], best_result(bus_results[0]), bus_results[1]],[plane_results[0], best_result(plane_results[0]), plane_results[1]]
 	
-	return [[[["77.50", 456], ["34.00", 420], ["84.50", 459], ["77.50", 464], ["84.50", 463]], [0.702, 1], "http://ojp.nationalrail.co.uk/service/timesandfares/ABD/London/111213/0900/dep"], [[["13.00", 770], ["13.00", 775], ["13.00", 745], ["13.00", 690]], [0.963, 3], "https://uk.megabus.com/JourneyResults.aspx?originCode=1&destinationCode=56&outboundDepartureDate=11%2f12%2f2013&passengerCount=1&transportType=-1"], [[["45.99", 100], ["47.99", 100], ["55.62", 100], ["69.99", 100], ["73.06", 100], ["75.60", 100], ["88.30", 100], ["100.16", 95], ["112.01", 90], ["155.83", 90]], [0.792, 0], "http://www.tripsta.co.uk/airline-tickets/results?dep=ABZ&arr=LON&passengersAdult=1&passengersChild=0&passengersInfant=0&class=&airlineCode=&directFlightsOnly=0&extendedDates=0&isRoundtrip=0&obDate=11%2f12%2f2013&obTime=&ibDate=&ibTime="]]
+	train_results = [["77.50", 456], ["34.00", 420], ["84.50", 459], ["77.50", 464], ["84.50", 463]]
+	bus_results = [["13.00", 770], ["13.00", 775], ["13.00", 745], ["13.00", 690]]
+	plane_results = [["45.99", 100], ["47.99", 100], ["55.62", 100], ["69.99", 100], ["73.06", 100], ["75.60", 100], ["88.30", 100], ["100.16", 95], ["112.01", 90], ["155.83", 90]]
+	
+	all_journeys = Array.new
+	train_results.each do |r|
+		all_journeys.push([r, "train"])
+	end
+	bus_results.each do |r|
+		all_journeys.push([r, "bus"])
+	end
+	plane_results.each do |r|
+		all_journeys.push([r, "plane"])
+	end
+
+	all_results = Array.new
+	all_journeys.each do |r|
+		all_results.push(r[0])
+	end
+
+	return all_journeys[best_result(all_results)[1]], [[[["77.50", 456], ["34.00", 420], ["84.50", 459], ["77.50", 464], ["84.50", 463]], [0.702, 1], "http://ojp.nationalrail.co.uk/service/timesandfares/ABD/London/111213/0900/dep"], [[["13.00", 770], ["13.00", 775], ["13.00", 745], ["13.00", 690]], [0.963, 3], "https://uk.megabus.com/JourneyResults.aspx?originCode=1&destinationCode=56&outboundDepartureDate=11%2f12%2f2013&passengerCount=1&transportType=-1"], [[["45.99", 100], ["47.99", 100], ["55.62", 100], ["69.99", 100], ["73.06", 100], ["75.60", 100], ["88.30", 100], ["100.16", 95], ["112.01", 90], ["155.83", 90]], [0.792, 0], "http://www.tripsta.co.uk/airline-tickets/results?dep=ABZ&arr=LON&passengersAdult=1&passengersChild=0&passengersInfant=0&class=&airlineCode=&directFlightsOnly=0&extendedDates=0&isRoundtrip=0&obDate=11%2f12%2f2013&obTime=&ibDate=&ibTime="]]
 end
 
 def best_result(results)
 	prices = Array.new
 	durations = Array.new
+	
 	results.each do |r|
 		prices.push(r[0].to_f)
 		durations.push(r[1])
 	end
+		
 	
 	#variables for test
 	prices_mean = DescriptiveStatistics::Stats.new(prices).mean
