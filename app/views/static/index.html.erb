@@ -1,3 +1,11 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#testbtn").click(function() {
+			$("#testp").load("/journeys/new")
+		})
+	})
+</script>
+
 <h1> Travel Planner </h1>
 
 <div id="top">
@@ -28,6 +36,9 @@
 	<p> Welcome to Travel Planner(tm). This tool helps you plan trips and compare prices for various travel methods, whether it's by bus or plane. To get started, click on 'Create a new trip'. </p>
 
 	<a href="/journey/new">Create a new trip</a>
+
+	<button id="testbtn">AJAX TEST</button>
+	<p id="testp">test</p>
 
 	<p> Supported travel methods: </p>
 	<ul>
