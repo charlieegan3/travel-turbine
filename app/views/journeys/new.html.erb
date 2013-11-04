@@ -1,10 +1,97 @@
-<h1> Your new journey </h1>
+<div class="panel panel-default">
+  <div class="panel-heading">Summary
+  </div>
+  <div class="panel-body">
+  	<p style="line-height:200%">On your journey from 
+  	<span class="label label-info" style="font-size: 15px"><%= @journey.origin %></span>
+  	 to <span class="label label-info" style="font-size: 15px"><%= @journey.destination %></span>
+  	 on <span class="label label-info" style="font-size: 15px"><%= @date.strftime('%d/%m/%Y') %></span>
+  	 the best overall result was by <span class="label label-success" style="font-size: 15px"><%= @journey.best_result[1] %></span>, costs 
+  	 <span class="label label-success" style="font-size: 15px">£<%= @journey.best_result[0][0] %></span> and takes
+  	 <span class="label label-success" style="font-size: 15px"><%= distance_of_time_in_words(Time.now, Time.now + @journey.best_result[0][1].minutes) %></span>.</p>
 
-<%= @journey.origin %><br/>
-<%= @journey.destination %><br/>
-<%= @journey.date %><br/>
-<%= @journey.train_result %><br/><br/>
-<%= @journey.bus_result %><br/><br/>
-<%= @journey.plane_result %><br/>
+  	 <p>Click <%= link_to("here", @best_link)%> to buy this ticket now!</p>
 
-there was more here but I lost the code!
+
+
+<p>more summary graphs and things</p>
+  </div>
+</div>
+<p>All results are listed below, best options are highlighted in green.</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Train</div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Cost</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @train_list.count().times do |i|%>
+  		<% if i == @train_best %>
+  			<tr class="best-option">
+  		<% else %>
+  			<tr>
+  		<% end %>
+  			<td>£<%= @train_list[i][0] %></td>
+  			<td><%= distance_of_time_in_words(Time.now, Time.now + @train_list[i][1].minutes) %></td>
+  		</tr>
+  		<% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Bus</div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Cost</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bus_list.count().times do |i|%>
+  		<% if i == @bus_best %>
+  			<tr class="best-option">
+  		<% else %>
+  			<tr>
+  		<% end %>
+  			<td>£<%= @bus_list[i][0] %></td>
+  			<td><%= distance_of_time_in_words(Time.now, Time.now + @bus_list[i][1].minutes) %></td>
+  		</tr>
+  		<% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Plane</div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Cost</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @plane_list.count().times do |i|%>
+  		<% if i == @plane_best %>
+  			<tr class="best-option">
+  		<% else %>
+  			<tr>
+  		<% end %>
+  			<td>£<%= @plane_list[i][0] %></td>
+  			<td><%= distance_of_time_in_words(Time.now, Time.now + @plane_list[i][1].minutes) %></td>
+  		</tr>
+  		<% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

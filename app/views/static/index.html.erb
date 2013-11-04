@@ -1,65 +1,56 @@
+<div class="container">
+      <div class="masthead"></div>
+      <div class="jumbotron">
+        <div style class="alert alert-dismissable visible-xs alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <b>Warning! </b>We've noticed you're using a mobile phone, if we had an app on the app store we'd have a link here!
+        </div>
+        <h1>Catchy Name</h1>
+        <p class="lead">Select your search criteria below and we'll do the rest.</p>
+        <div class="row">
+          <div class="col-md-5">
+            <select id="originselect" class="form-control">
+              <% @locations.each do |l|%>
+              <option><%= l.name %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <p>traveling to<br></p>
+          </div>
+          <div class="col-md-5">
+            <select id="destinationselect" class="form-control">
+              <% @locations.each do |l|%>
+              <option><%= l.name %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <input id="datepicker" placeholder="Date" class="form-control" type="text">
+            <a id="searchbutton" class="btn btn-primary btn-sm" style="margin-top: 5px;">Search</a>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+        <p></p>
+        <div id="results">
+        <!-- results go here! -->
+        </div>
+        </div>
+      </div>
+    </div>
+
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#testbtn").click(function() {
-			$("#testp").load("/journeys/new")
+		$("#searchbutton").click(function() {
+			var origin = document.getElementById("originselect").value;
+			var destination = document.getElementById("destinationselect").value;
+			var query = "journey/new?origin="+origin+"&destination="+destination+"&date=211113"
+ 			$("#results").load(query)
 		})
 	})
 </script>
 
-<h1> Travel Planner </h1>
 
-<div id="top">
-	<!-- This div is persistent? I.e. position:fixed; and anything below updated via AJAX or something? -->
-	<div id="logo">
-		<!-- slot for a logo or something -->
-	</div>
-
-	<div id="navbar">
-		<!-- links -->
-		<ul>
-			<li><a href="">Popular locations</a></li>
-			<li><a href="">Create a journey</a></li>
-		</ul>
-	</div>
-
-	<div id="userbar">
-		<!-- User info, avatar, log in/out links, etc. -->
-	</div>
-
-<!-- END DIV 'top' -->	
-</div>
-
-<h2> Welcome! </h2>
-<img src="http://wiki.openstreetmap.org/w/images/thumb/e/e7/Bus-icon.svg/165px-Bus-icon.svg.png"></img>
-
-<div id="main">
-	<p> Welcome to Travel Planner(tm). This tool helps you plan trips and compare prices for various travel methods, whether it's by bus or plane. To get started, click on 'Create a new trip'. </p>
-
-	<a href="/journey/new">Create a new trip</a>
-
-	<button id="testbtn">AJAX TEST</button>
-	<p id="testp">test</p>
-
-	<p> Supported travel methods: </p>
-	<ul>
-		<li>Planes</li>
-		<li>Trains</li>
-		<li>Automobiles</li>
-	</ul>
-
-	<p> Watch this space.</p>
-
-	<div class="content">
-	</div>
-
-<!-- END DIV 'main' -->
-</div>
-
-<div id="footer">
-	<div id="links">
-		<p>footer stuff</p>
-	</div>
-	<div id="info">
-		<p>footer stuff</p>
-	</div>
-</div>
