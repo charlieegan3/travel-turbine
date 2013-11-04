@@ -1,7 +1,6 @@
 class JourneysController < ApplicationController
 
 	def new
-		# Prepare a new Journey for creation.
 		orig = Location.find_by_name(params[:origin]) #all loc's have uniq names
 		dest = Location.find_by_name(params[:destination])
 		date = params[:date]
@@ -11,10 +10,28 @@ class JourneysController < ApplicationController
 		@journey.origin = params[:origin]
 		@journey.destination = params[:destination]
 		@journey.date = params[:date]
-		@journey.train_result = @data[1][0].to_s
-		@journey.bus_result = @data[1][1].to_s
-		@journey.plane_result = @data[1][2].to_s
+		@journey.train_result = @data[1][0]
+		@journey.bus_result = @data[1][1]
+		@journey.plane_result = @data[1][2]
 		#@journey.save #to stop creating uneeded elements in testing
+
+		#vars for the view
+		year = Integer("20" + date[4,2])
+		mon = Integer(date[1,2])
+		day = Integer(date[0,2])
+		@date = DateTime.new(year, mon, day).to_date
+
+		@train_list = @journey.train_result[0]
+		@train_best = @journey.train_result[1][1]
+		@train_link = @journey.train_result[2]
+
+		@bus_list = @journey.bus_result[0]
+		@bus_best = @journey.bus_result[1][1]
+		@bus_link = @journey.bus_result[2]
+
+		@plane_list = @journey.plane_result[0]
+		@plane_best = @journey.plane_result[1][1]
+		@plane_link = @journey.plane_result[2]
 
 		# USER INFO -> Use devise helper to check if a user is signed in  (Work in Progress)
 		if user_signed_in?
@@ -22,9 +39,6 @@ class JourneysController < ApplicationController
 		else
 			@journey.user = "Anonymous"
 		end
-
-		#things for the view
-		@train_result = @journey.train_result.split(',')
 	end
 
 
