@@ -124,6 +124,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby
   coffee-rails (~> 4.0.0)
   descriptive-statistics (~> 2.1.0)
   devise

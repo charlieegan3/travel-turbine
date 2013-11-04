@@ -1,5 +1,6 @@
 TravelPlanner::Application.routes.draw do
   
+  devise_for :users
   resources :journeys
 
   root to: "static#index"

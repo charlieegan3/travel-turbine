@@ -16,6 +16,13 @@ class JourneysController < ApplicationController
 		@journey.plane_result = @data[1][2].to_s
 		#@journey.save #to stop creating uneeded elements in testing
 
+		# USER INFO -> Use devise helper to check if a user is signed in  (Work in Progress)
+		if user_signed_in?
+			@journey.user = current_user#.email?    # https://github.com/plataformatec/devise#controller-filters-and-helpers
+		else
+			@journey.user = "Anonymous"
+		end
+
 		#things for the view
 		@train_result = @journey.train_result.split(',')
 	end
