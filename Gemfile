@@ -15,6 +15,9 @@ gem "nokogiri", "~> 1.6.0"
 #using to save time on the journey comparisons
 gem "descriptive-statistics", "~> 2.1.0"
 
+#For displaying images in /assets on Heroku
+gem 'rails_serve_static_assets'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
