@@ -22,4 +22,3 @@
 			$("body").replaceWith("<h1>LOADING...</h1>");
 		})
 	})
-

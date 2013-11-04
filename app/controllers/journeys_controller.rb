@@ -13,6 +13,7 @@ class JourneysController < ApplicationController
 		@journey.train_result = @data[1][0]
 		@journey.bus_result = @data[1][1]
 		@journey.plane_result = @data[1][2]
+		@journey.best_result = @data[0]
 		#@journey.save #to stop creating uneeded elements in testing
 
 		#vars for the view
@@ -33,11 +34,23 @@ class JourneysController < ApplicationController
 		@plane_best = @journey.plane_result[1][1]
 		@plane_link = @journey.plane_result[2]
 
+
+		case @journey.best_result[1]
+		when "plane"
+		  @best_link = @plane_link
+		when "bus"
+		  @best_link = @bus_link
+		when "train"
+		  @best_link = @train_link
+		else
+		  @best_link = "http://www.error.com"
+		end
+
 		# USER INFO -> Use devise helper to check if a user is signed in  (Work in Progress)
 		if user_signed_in?
 			@journey.user = current_user#.email?    # https://github.com/plataformatec/devise#controller-filters-and-helpers
 		else
-			@journey.user = "Anonymous"
+			#@journey.user = "anon"
 		end
 	end
 
