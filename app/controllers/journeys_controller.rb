@@ -27,4 +27,14 @@ class JourneysController < ApplicationController
 		@train_result = @journey.train_result.split(',')
 	end
 
+
+	def destroy
+		if admin_session?
+			@journey = Journey.find(params[:id])
+			@journey.destroy
+		else
+			flash[:alert] = "You must have admin rights to delete journeys."
+		end
+	end
+
 end
