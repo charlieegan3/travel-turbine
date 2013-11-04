@@ -17,3 +17,4 @@ To get the application running on your machine:
 == Dependencies
 
 ->  Rails 4.0.0
+
