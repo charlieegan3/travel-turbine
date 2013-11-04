@@ -1,16 +1,1 @@
-
-
-<%= form_for @journey do |f| %>
-  <%= f.label :origin, 'Origin' %>:
-  <%= f.select :origin, @origin %><br />
-  <%= f.label :destination, 'Destination' %>:
-  <%= f.select :origin, @origin %><br />
-  <%= f.label :date, 'Leaving on' %>:
-  <%= date_select(@journey, :date) %><br />  <!-- PICK DATE WITH A DROP-DOWN OR JQUERY CALENDAR -->
-  <p>Click 'Create journey' To generate a list of options:</p>
-  <%= f.submit %>
-<% end %>
-
-<br />
-
-<%= link_to 'Back', :root, {:class=>"newpage_btn"} %>
+<%= @data %>

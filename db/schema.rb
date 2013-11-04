@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104105838) do
+ActiveRecord::Schema.define(version: 20131104111245) do
 
   create_table "journeys", force: true do |t|
     t.string   "origin"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20131104105838) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "best_result"
+    t.string   "date"
   end
 
   create_table "locations", force: true do |t|
