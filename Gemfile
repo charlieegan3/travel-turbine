@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Devise for user accounts
+gem 'devise'
+
 #to create seed data
 gem "seed_dumper", "~> 0.1.3"
 
