@@ -1,4 +1,5 @@
-class UsersController < ApplicationController
+class AdminsController < ApplicationController
+	
 	before_action :authenticate_user!    # before_action === before_filter   (latter is not yet deprecated)
 
 
