@@ -10,6 +10,9 @@ To get the application running on your machine:
 
 4) rake db:seed
 
+5) IMPORTANT:  
+   In /config/environments/production.rb
+   -> Add Heroku host URL to 'config.action_mailer.default_url_options
 
 == Dependencies
 
