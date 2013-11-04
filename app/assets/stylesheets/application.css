@@ -1,3 +1,23 @@
 .best-option>*{background-color: #C4E5C4;}
 tbody>*>*, thead>*>*{text-align:center}
 div.panel-heading{font-size: 20px;}
+
+
+/* Some CSS for the top part of static/index.html */
+#top_container {
+}
+#navbar {
+
+}
+#userbar {
+	float:right;
+	width: 50%;
+	
+}
+#userbar a, img{
+	margin:10px;
+	padding:5px;
+	background:beige;
+	float:right;
+}
+/* ------------------------------------------------ */

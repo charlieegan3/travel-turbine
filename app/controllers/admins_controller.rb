@@ -5,7 +5,7 @@ class AdminsController < ApplicationController
 
 	# Note:  It seems Devise handles controller stuff too, so for the moment we don't need to put anything here.
 
-	# Additional methods should work, but stuff like new users and signing in is already handled by devise.
+	# Additional methods should work, but stuff like new users and signing in is already handled by devise.git 
 
 
 end
