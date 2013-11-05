@@ -138,7 +138,31 @@ def best_journey(origin, destination, date)
 		all_results.push(r[0])
 	end
 
-	return all_journeys[best_result(all_results)[1]], [[train_results[0], best_result(train_results[0]), train_results[1]], [bus_results[0], best_result(bus_results[0]), bus_results[1]],[plane_results[0], best_result(plane_results[0]), plane_results[1]]]
+	return_data = Array.new
+	return_results = Array.new
+
+	if all_results.any? == false
+		return "None of Any"
+	else
+		return_data.push(all_journeys[best_result(all_results)[1]])
+		if train_results.any?
+			return_results.push([train_results[0], best_result(train_results[0]), train_results[1]])
+		else
+			return_results.push("None of Train")
+		end
+		if bus_results.any?
+			return_results.push([bus_results[0], best_result(bus_results[0]), bus_results[1]])
+		else
+			return_results.push("None of Bus")
+		end
+		if plane_results.any?
+			return_results.push([plane_results[0], best_result(plane_results[0]), plane_results[1]])
+		else
+			return_results.push("None of Plane")
+		end
+		return_data.push(return_results)
+		return return_data
+	end
 
 end
 

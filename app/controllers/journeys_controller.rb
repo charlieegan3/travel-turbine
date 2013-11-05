@@ -18,21 +18,54 @@ class JourneysController < ApplicationController
 
 		#vars for the view
 		year = Integer("20" + @journey.date[4,2])
-		mon = Integer(@journey.date[2,2])
-		day = Integer(@journey.date[0,2])
+		mon = @journey.date[2,2]
+		day = @journey.date[0,2]
+		if mon[0] == "0"
+			mon = mon[1,1]
+		end
+		if day[0] == "0"
+			day = day[1,1]
+		end
+		mon = Integer(mon)
+		day = Integer(day)
+		
 		@date = DateTime.new(year, mon, day).to_date
 
-		@train_list = @journey.train_result[0]
-		@train_best = @journey.train_result[1][1]
-		@train_link = @journey.train_result[2]
+		if @journey.train_result.nil? == false
+		if @journey.train_result[1].nil? == false
+			@train_list = @journey.train_result[0]
+			@train_best = @journey.train_result[1][1]
+			@train_link = @journey.train_result[2]
+		end
+		else
+			@train_list = "None"
+			@train_best = "None"
+			@train_link = "www.nationalrail.com"
+		end
 
-		@bus_list = @journey.bus_result[0]
-		@bus_best = @journey.bus_result[1][1]
-		@bus_link = @journey.bus_result[2]
+		if @journey.bus_result.nil? == false
+		if @journey.bus_result[1].nil? == false
+			@bus_list = @journey.bus_result[0]
+			@bus_best = @journey.bus_result[1][1]
+			@bus_link = @journey.bus_result[2]
+		end
+		else
+			@bus_list = "None"
+			@bus_best = "None"
+			@bus_link = "www.megabus.com"
+		end
 
-		@plane_list = @journey.plane_result[0]
-		@plane_best = @journey.plane_result[1][1]
-		@plane_link = @journey.plane_result[2]
+		if @journey.plane_result.nil? == false
+		if @journey.plane_result[1].nil? == false
+			@plane_list = @journey.plane_result[0]
+			@plane_best = @journey.plane_result[1][1]
+			@plane_link = @journey.plane_result[2]
+		end
+		else
+			@plane_list = "None"
+			@plane_best = "None"
+			@plane_link = "www.tripsta.com"
+		end
 
 
 		case @journey.best_result[1]
