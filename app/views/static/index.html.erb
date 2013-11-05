@@ -2,10 +2,10 @@
         <div class="header">
         <ul class="nav nav-pills pull-right">
         <% if current_user.nil? %>
-        	<li><a href="/users/sign_up" class="topbar_link">Sign Up!</a></li>
-          <li><a href="/users/sign_in" class="topbar_link">Log in!</a></li>
+          <li><a href="/users/sign_out" class="topbar_link">Log out!</a></li>
         <% else %>
-        	<li><a href="/users/sign_out" class="topbar_link">Log out!</a></li>
+          <li><a href="/users/sign_up" class="topbar_link">Sign Up!</a></li>
+          <li><a href="/users/sign_in" class="topbar_link">Log in!</a></li>
         <% end %>
         </ul>
       </div>
