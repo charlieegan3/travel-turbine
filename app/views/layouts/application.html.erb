@@ -102,8 +102,12 @@
 
 
 <!-- Devise uses alerts and notices to display it's messages, e.g. 'Sign-up successful' or 'Error: please enter a valid email' -->
-<p class="notice" style="background:yellow;"><%= notice %></p>
-<p class="alert" style="background:red;"><%= alert %></p>
+<% flash.each do |message| %>
+  <% if message %>
+    <p class="notice" style="background:yellow;"><%= notice %></p>
+    <p class="alert" style="background:red;"><%= alert %></p>
+  <% end %>
+<% end %>
 
 
 <%= yield %>
