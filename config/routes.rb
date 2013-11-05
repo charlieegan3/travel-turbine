@@ -12,7 +12,9 @@ TravelPlanner::Application.routes.draw do
   get '/admins/add_admin', to: 'admins#add_admin'
 
   get 'users/sign_out', to: 'session#destroy'
-
+  devise_scope :admin do 
+    get 'admins/sign_out', to: 'devise/sessions#destroy'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
