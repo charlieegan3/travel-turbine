@@ -1,6 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">Summary
   </div>
+
+<% if @journey %>
+
   <div class="panel-body">
   	<p style="line-height:200%">On your journey from 
   	<span class="label label-info" style="font-size: 18px"><%= @journey.origin %></span>
@@ -94,4 +97,14 @@
       </tbody>
     </table>
   </div>
+
+<% else %>
+
+<h1> Sorry, no results for your criteria. </h1>
+
+
+<% end %>
+
+
 </div>
+

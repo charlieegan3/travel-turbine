@@ -85,10 +85,14 @@
   			$( "#error" ).hide();
   			$("#results").html('<img src="http://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif">')
   			var query = "journey/new?origin="+origin+"&destination="+destination+"&date="+date
- 			$("#results").load(query)
- 			$("html, body").animate({ scrollTop: $('#results').offset().top }, 1000);
   		}
-			
+      if ($("#results").load(query)) {
+          $("html, body").animate({ scrollTop: $('#results').offset().top }, 1000);
+			 }
+      else {
+        $( "#error" ).show();
+        $("#error").html("Error parsing request. The developer responsible has been fired.");
+      }
 		})
 </script>
 

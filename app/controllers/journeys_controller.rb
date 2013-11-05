@@ -5,6 +5,8 @@ class JourneysController < ApplicationController
 		dest = Location.find_by_name(params[:destination])
 		date = params[:date]
 
+	if @data
+		
 		@data = best_journey(orig,dest,date)
 		@journey = Journey.new
 		@journey.origin = params[:origin]
@@ -45,6 +47,10 @@ class JourneysController < ApplicationController
 		else
 		  @best_link = "http://www.error.com"
 		end
+	
+
+	end  # ^ if @data
+
 
 		# USER INFO -> Use devise helper to check if a user is signed in  (Work in Progress)
 		if user_signed_in?
