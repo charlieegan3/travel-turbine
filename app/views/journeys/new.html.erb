@@ -2,12 +2,11 @@
   <div class="panel-heading">Summary
   </div>
 
-
   <div class="panel-body">
   <% if @best_link != "http://www.error.com" %>
   	<p style="line-height:200%">On your journey from 
-  	<span class="label label-info" style="font-size: 18px"><%= @journey.origin %></span>
-  	 to <span class="label label-info" style="font-size: 18px"><%= @journey.destination %></span>
+  	<span id="origin_label" class="label label-info" style="font-size: 18px"><%= @journey.origin %></span>
+  	 to <span id="dest_label" class="label label-info" style="font-size: 18px"><%= @journey.destination %></span>
   	 on <span class="label label-info" style="font-size: 18px"><%= @date.strftime('%d/%m/%Y') %></span>
   	 the best overall result was by <span class="label label-success" style="font-size: 18px"><%= @journey.best_result[1] %></span>, costs 
   	 <span class="label label-success" style="font-size: 18px">£<%= @journey.best_result[0][0] %></span> and takes
@@ -21,7 +20,6 @@
   <% end %>
   </div>
 </div>
-
 
 <p>All results are listed below, best options are highlighted in green.</p>
 
@@ -109,7 +107,17 @@
     </table>
     <p>Click <%= link_to("here", @plane_link)%> to buy tickets and browse plane fares.</p>
   </div>
+  </div>
 <% end %>
+
+<div class="panel panel-default">
+          <div class="panel-heading">Car</div>
+          <div class="panel-body">
+            The journey by car would be <strong id="car_dist"><%= @car_miles %></strong> miles and take about <strong id="car_dur"><%= distance_of_time_in_words(Time.now, Time.now + @car_mins.minutes) %></strong>.<br/> The estimated cost for the journey is <strong id="car_cost">£<%= @car_cost %></strong>. Click <a id="car_link" href='<%= @car_link %>'>here</a> to see the full set of directions.
+          </div>
+        </div>
+
+
 
 </div>
 

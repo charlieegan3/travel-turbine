@@ -47,6 +47,10 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    extlib (0.9.16)
+    google_directions (0.1.5)
+      extlib (>= 0.9.15)
+      nokogiri (>= 1.4.1)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -56,6 +60,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    log4r (1.1.10)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -132,8 +137,10 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   descriptive-statistics (~> 2.1.0)
   devise
+  google_directions
   jbuilder (~> 1.2)
   jquery-rails
+  log4r (~> 1.1.10)
   nokogiri (~> 1.6.0)
   rails (= 4.0.0)
   rails_serve_static_assets

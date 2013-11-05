@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#there's a gem for that!
+gem 'google_directions'
+
 #datepickers will be the death of me
 gem 'bootstrap-datepicker-rails'
 

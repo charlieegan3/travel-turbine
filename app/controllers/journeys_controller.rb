@@ -67,7 +67,6 @@ class JourneysController < ApplicationController
 			@plane_link = "www.tripsta.com"
 		end
 
-
 		case @journey.best_result[1]
 		when "plane"
 		  @best_link = @plane_link
@@ -79,6 +78,11 @@ class JourneysController < ApplicationController
 		  @best_link = "http://www.error.com"
 		end
 
+		@car_miles = directions = GoogleDirections.new(params[:origin], params[:destination]).distance_in_miles
+		@car_mins = directions = GoogleDirections.new(params[:origin], params[:destination]).drive_time_in_minutes
+		@car_link = "https://www.google.co.uk/maps/preview?saddr=#{params[:origin]}&daddr=#{params[:destination]}"
+		@car_cost = (((@car_miles*1.609)/100)*5*1.3070*1.3).round(2) #1.3 = for driver ineficency
+		#http://en.wikipedia.org/wiki/Fuel_economy_in_automobiles#Fuel_economy_standards_and_testing_procedures
 
 		# USER INFO -> Use devise helper to check if a user is signed in  (Work in Progress)
 		if user_signed_in?

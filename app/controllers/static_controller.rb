@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
 	require 'open-uri'
 	def index
-		@locations = Location.all
+		@locations = Location.all.order("name ASC")
 	end
 end
