@@ -7,7 +7,7 @@ class AdminsController < ApplicationController
 
 	# Additional methods should work, but stuff like new users and signing in is already handled by devise.git 
 	def add_admin
-		Admin.new
+		"yeah"
 	end
 
 

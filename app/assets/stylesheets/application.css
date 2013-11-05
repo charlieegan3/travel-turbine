@@ -6,6 +6,13 @@ div.panel-heading{font-size: 20px;}
   margin-top: 5px;
 }
 
+.notice {
+  background: yellow;
+}
+.alert {
+  background: red;
+}
+
 /*!
  * Datepicker for Bootstrap
  *
