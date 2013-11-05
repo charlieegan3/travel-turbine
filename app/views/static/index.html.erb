@@ -1,14 +1,18 @@
 <div class="container">
         <div class="header">
         <ul class="nav nav-pills pull-right">
-        <% if current_user.nil?%>
-          <li><a href="/users/sign_out" class="topbar_link">Log out!</a></li>
-          <li><a href="/admins/sign_out" class="topbar_link">Log out (admin)</a><li>
-            <!-- NB  Need to detect user type (user/admin) somehow...  OR:  make only one sign_out action for both types? -->
-        <% else %>
+        
+        <% if current_user.nil? and current_admin.nil? %>    <!-- if curren_user.nil? -->
+          <li><a href="/admins/sign_in" class="topbar_link">Admin sign in</a></li>
           <li><a href="/users/sign_up" class="topbar_link">Sign Up!</a></li>
           <li><a href="/users/sign_in" class="topbar_link">Log in!</a></li>
+        <% elsif current_user %>
+          <li><a href="/users/sign_out" class="topbar_link">Log out!</a></li>
+        <% else %> 
+          <li><a href="/admins/sign_out" class="topbar_link">Log out (admin)</a><li>
         <% end %>
+        
+
         </ul>
       </div>
       <div class="jumbotron">
