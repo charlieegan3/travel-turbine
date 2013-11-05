@@ -1,6 +1,6 @@
 TravelPlanner::Application.routes.draw do
   
-  devise_for :admins, :path_names => {:add_admin => 'add_admin'}
+  devise_for :admins
   devise_for :users
   resources :journeys
 
@@ -10,6 +10,8 @@ TravelPlanner::Application.routes.draw do
   get '/search', to: 'static#search'
 
   get '/admins/add_admin', to: 'admins#add_admin'
+
+  get 'users/sign_out', to: 'session#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
