@@ -20,7 +20,25 @@
 
 //".newpage" is a class for any button that links to a different view (which sometimes takes a while to load on slow Heroku)
 $(document).ready(function() {
+
+	// Hide warning/alert backgrounds if they're not actually being displayed
+	if ($(".alert").is(':empty')) {
+		$(".alert").css("background", "none");
+	}
+	else {
+		$(".alert").css("background", "red");
+	}
+	// Again for notices
+	if ($(".notice").is(':empty')) {
+		$(".notice").css("background", "none");
+	}
+	else {
+		$(".notice").css("background", "yellow");
+	}	
+
+	// Loading message for buttons (NOT USED atm)
 	$(".newpage_btn").click(function() {
 			$("body").replaceWith("<h1>LOADING...</h1>");
 	})
+
 })
