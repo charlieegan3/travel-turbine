@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-datepicker
 
 
 //".newpage" is a class for any button that links to a different view (which sometimes takes a while to load on slow Heroku)
@@ -23,5 +24,3 @@ $(document).ready(function() {
 			$("body").replaceWith("<h1>LOADING...</h1>");
 	})
 })
-
-//= require bootstrap-datepicker
