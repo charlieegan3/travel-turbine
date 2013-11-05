@@ -9,7 +9,7 @@
         <% elsif current_user %>
           <li><a href="/users/sign_out" class="topbar_link">Log out!</a></li>
         <% else %> 
-          <li>You are signed in as: <br /> <%= current_admin.email %> [ADMIN]</li>
+          <li>You are signed in as: <br /> <strong> <%= current_admin.email %> [ADMIN] </strong> </li>
           <li><a href="/admins/add_admin" class="topbar_link">Create new admin</a><li>
           <li><a href="/admins/add_user" class="topbar_link">Create new user</a><li>
           <li><a href="/admins/sign_out" class="topbar_link">Log out</a><li>

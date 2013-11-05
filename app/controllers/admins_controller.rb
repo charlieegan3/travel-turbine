@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
 	
-	before_action :authenticate_user!    # before_action === before_filter   (latter is not yet deprecated)
+	before_action :authenticate_admin!    # before_action === before_filter   (latter is not yet deprecated)
 
 
 	# Note:  It seems Devise handles controller stuff too, so for the moment we don't need to put anything here.
