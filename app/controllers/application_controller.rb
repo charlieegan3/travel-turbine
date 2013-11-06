@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
 #make a request to national rail like: train("INV", "ABD", "211113")
 def train(origin, destination, date)
+	logger.info "checking trains"
 	url = "http://ojp.nationalrail.co.uk/service/timesandfares/#{origin}/#{destination}/#{date}/0900/dep"
 	xml = Nokogiri::HTML(open(url).read)
 	#get prices
@@ -48,6 +49,7 @@ end
 
 #make a request to megabus like: bus("49", "56", "211113")
 def bus(origin, destination, date)
+	logger.info "checking buses"
 	param_date = date[0,2] + "%2f" + date[2,2] + "%2f20" + date[4,2] #megabus uses odd date formats
 	url = "https://uk.megabus.com/JourneyResults.aspx?originCode=#{origin}&destinationCode=#{destination}&outboundDepartureDate=#{param_date}&passengerCount=1&transportType=-1"
 	xml = Nokogiri::HTML(open(url).read)
@@ -93,6 +95,7 @@ end
 
 #make a request to tripsta like: plane("INV", "LON", "211113")
 def plane(origin, destination, date)
+	logger.info "checking planes"
 	param_date = date[0,2] + "%2f" + date[2,2] + "%2f20" + date[4,2]
 	url = "http://www.tripsta.co.uk/airline-tickets/results?dep=#{origin}&arr=#{destination}&passengersAdult=1&passengersChild=0&passengersInfant=0&class=&airlineCode=&directFlightsOnly=0&extendedDates=0&isRoundtrip=0&obDate=#{param_date}&obTime=&ibDate=&ibTime="
 	xml= Nokogiri::HTML(open(url).read)
@@ -138,6 +141,7 @@ def plane(origin, destination, date)
 end
 
 def best_journey(origin, destination, date)
+	logger.info "calculating results"
 	train_results = train(origin.station, destination.station, date)
 	bus_results = bus(origin.bus, destination.bus, date)
 	plane_results = plane(origin.airport, destination.airport, date)

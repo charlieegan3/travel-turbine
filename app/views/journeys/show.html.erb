@@ -1,7 +1,170 @@
-<h1>Details for your journey from [ORIGIN] to [DESTINATION]</h1>
-<h2>Leaving: [STARTDATE]  Arriving: [ENDDATE]</h2>
 
-<!-- Here we display the price, and individual ticket info for all stages of the journey -->
+<div class="container">
+        <div class="header">
+        <ul class="nav nav-pills pull-right">
+        <% if current_user.nil? and current_admin.nil? %>    <!-- if curren_user.nil? -->
+          <li><a href="/admins/sign_in" class="topbar_link">Admin sign in</a></li>
+          <li><a href="/users/sign_up" class="topbar_link">Sign Up!</a></li>
+          <li><a href="/users/sign_in" class="topbar_link">Log in!</a></li>
+        <% elsif current_user %>
+          <li><a href="/users/sign_out" class="topbar_link">Log out!</a></li>
+        <% else %> 
+          <li>You are signed in as: <br /> <strong> <%= current_admin.email %> [ADMIN] </strong> </li>
+          <li><a href="/admins/add_admin" class="topbar_link">Create new admin</a><li>
+          <li><a href="/admins/add_user" class="topbar_link">Create new user</a><li>
+          <li><a href="/admins/sign_out" class="topbar_link">Log out</a><li>
+        <% end %>
+      </ul>
+      </div>
+
+      <div class="jumbotron">
+        <div style class="alert alert-dismissable visible-xs alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <b>Warning! </b>We've noticed you're using a mobile phone, if we had an app on the app store we'd have a link here!
+        </div>
+        <h2><%= @journey.origin %> ➙ <%= @journey.destination %></h2>
+        <p class="lead">In <%= distance_of_time_in_words(Time.now.to_date, @date) %> time</p>
+        
+        <div class="panel panel-default">
+  <div class="panel-heading">Summary
+  </div>
+
+  <div class="panel-body">
+  <% if @best_link != "http://www.error.com" %>
+  	<p style="line-height:200%">On your journey from 
+  	<span id="origin_label" class="label label-info" style="font-size: 18px"><%= @journey.origin %></span>
+  	 to <span id="dest_label" class="label label-info" style="font-size: 18px"><%= @journey.destination %></span>
+  	 on <span class="label label-info" style="font-size: 18px"><%= @date.strftime('%d/%m/%Y') %></span>
+  	 the best overall result was by <span class="label label-success" style="font-size: 18px"><%= @journey.best_result[1] %></span>, costs 
+  	 <span class="label label-success" style="font-size: 18px">£<%= @journey.best_result[0][0] %></span> and takes
+     <span class="label label-success" style="font-size: 18px"><%= distance_of_time_in_words(Time.now, Time.now + @journey.best_result[0][1].minutes) %></span>.</p>
+
+  	<p>Click <%= link_to("here", @best_link, target: "_blank")%> to buy this ticket now!</p>
+    <p>more summary graphs and things</p>
+
+  <% else %>
+    <p>There are no results for your query. Either there's an error or it's time to hop in the car.</p>
+  <% end %>
+  </div>
+</div>
+
+<p>All results are listed below, best options are highlighted in green.</p>
+
+<% if @train_list.kind_of?(Array) %>
+<div class="panel panel-default">
+  <div class="panel-heading">Train</div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Cost</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @train_list.count().times do |i|%>
+      <% if i == @train_best %>
+        <tr class="best-option">
+      <% else %>
+        <tr>
+      <% end %>
+        <td>£<%= @train_list[i][0] %></td>
+        <td><%= distance_of_time_in_words(Time.now, Time.now + @train_list[i][1].minutes) %></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <p>Click <%= link_to("here", @train_link, target: "_blank")%> to buy tickets and browse train fares.</p>
+  </div>
+</div>
+<% end %>
+
+<% if @bus_list.kind_of?(Array) %>
+<div class="panel panel-default">
+  <div class="panel-heading">Bus</div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Cost</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bus_list.count().times do |i|%>
+      <% if i == @bus_best %>
+        <tr class="best-option">
+      <% else %>
+        <tr>
+      <% end %>
+        <td>£<%= @bus_list[i][0] %></td>
+        <td><%= distance_of_time_in_words(Time.now, Time.now + @bus_list[i][1].minutes) %></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <p>Click <%= link_to("here", @bus_link, target: "_blank")%> to buy tickets and browse bus fares.</p>
+  </div>
+</div>
+<% end %>
+
+<% if @plane_list.kind_of?(Array) %>
+<div class="panel panel-default">
+  <div class="panel-heading">Plane</div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Cost</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @plane_list.count().times do |i|%>
+      <% if i == @plane_best %>
+        <tr class="best-option">
+      <% else %>
+        <tr>
+      <% end %>
+        <td>£<%= @plane_list[i][0] %></td>
+        <td><%= distance_of_time_in_words(Time.now, Time.now + @plane_list[i][1].minutes) %></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <p>Click <%= link_to("here", @plane_link, target: "_blank")%> to buy tickets and browse plane fares.</p>
+  </div>
+  </div>
+<% end %>
+
+<div class="panel panel-default">
+          <div class="panel-heading">Car</div>
+          <div class="panel-body">
+            The journey by car would be <strong id="car_dist"><%= @car_miles %></strong> miles and take about <strong id="car_dur"><%= distance_of_time_in_words(Time.now, Time.now + @car_mins.minutes) %></strong>.<br/> The estimated cost for the journey is <strong id="car_cost">£<%= @car_cost %></strong>. Click <a id="car_link" target="_blank" href='<%= @car_link %>'>here</a> to see the full set of directions.
+          </div>
+        </div>
+
+<div class="panel panel-default">
+          <div class="panel-heading">Share</div>
+          <div class="panel-body">
+            <%= link_to "Permalink", @journey %><br/>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="'<%= journey_path(@journey) %>'" data-text="'<%= @journey.origin %> to <%= @journey.destination %> via Travel Turbine http://www.our.heroku.path<%= journey_path(@journey) %>'">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </div>
+        </div>
+</div>
 
 
-<%= link_to 'Back', root %>
+
+</div>
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+

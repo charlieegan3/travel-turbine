@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104140942) do
+ActiveRecord::Schema.define(version: 20131106143010) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(version: 20131104140942) do
   create_table "journeys", force: true do |t|
     t.string   "origin"
     t.string   "destination"
-    t.string   "train_result"
-    t.string   "bus_result"
-    t.string   "plane_result"
+    t.text     "train_result", limit: 255
+    t.text     "bus_result",   limit: 255
+    t.text     "plane_result", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "best_result"
+    t.text     "best_result",  limit: 255
     t.string   "date"
     t.string   "user"
   end
