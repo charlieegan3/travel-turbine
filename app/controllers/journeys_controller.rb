@@ -5,6 +5,14 @@ class JourneysController < ApplicationController
 		dest = Location.find_by_name(params[:destination])
 		date = params[:date]
 
+		#set a user variable
+		if current_user.nil?
+			user = 1 #the id of the guest user
+		else
+			user = current_user.id
+		end
+
+		#sort out stuff to do with getting a valid date
 		year = Integer("20" + date[4,2])
 		mon = date[2,2]
 		day = date[0,2]
@@ -40,10 +48,12 @@ class JourneysController < ApplicationController
 				@journey.bus_result = @data[1][1]
 				@journey.plane_result = @data[1][2]
 				@journey.best_result = @data[0]
+				@journey.owner = user
 				@journey.save
 			else
 				@journey = old_journey.dup
 				@journey.old_data = old_journey.created_at
+				@journey.owner = user
 				@journey.save
 				@data = "Data Already Available"
 			end
