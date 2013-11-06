@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#make console output more readable
+gem 'quiet_assets', :group => :development
+
 #there's a gem for that!
 gem 'google_directions'
 
