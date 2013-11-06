@@ -25,23 +25,27 @@ class JourneysController < ApplicationController
 		    @date = "Not valid"
 		end
 
-		
 		if (@date != "Not valid")
 			logger.info "getting data"
-			@data = best_journey(orig,dest,date)
+			@journey = Journey.where("origin = ? AND destination = ? AND date = ? AND created_at > ?", params[:origin], params[:destination], date, Time.now-1.days).first()
+			#still need to set the user in here!
+			#and save it
+			if @journey.nil?
+				@data = best_journey(orig,dest,date)
+				@journey = Journey.new
+				@journey.origin = params[:origin]
+				@journey.destination = params[:destination]
+				@journey.date = params[:date]
+				@journey.train_result = @data[1][0]
+				@journey.bus_result = @data[1][1]
+				@journey.plane_result = @data[1][2]
+				@journey.best_result = @data[0]
+				@journey.save
+			else
+				@data = "Data Already Available"
+			end
 			logger.info @data
-		if @data != "None of Any"
-			logger.info "results: " + @data.to_s + "\n"
-			@journey = Journey.new
-			@journey.origin = params[:origin]
-			@journey.destination = params[:destination]
-			@journey.date = params[:date]
-			@journey.train_result = @data[1][0]
-			@journey.bus_result = @data[1][1]
-			@journey.plane_result = @data[1][2]
-			@journey.best_result = @data[0]
-			@journey.save
-	
+		if (@data != "None of Any")
 			#vars for the view
 			if @journey.train_result.nil? == false
 			if @journey.train_result[1].nil? == false
