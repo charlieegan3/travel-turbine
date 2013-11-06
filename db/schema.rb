@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106143010) do
+ActiveRecord::Schema.define(version: 20131106210704) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20131106143010) do
     t.text     "best_result",  limit: 255
     t.string   "date"
     t.string   "user"
+    t.string   "old_data"
   end
 
   create_table "locations", force: true do |t|

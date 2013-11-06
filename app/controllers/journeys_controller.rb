@@ -27,10 +27,10 @@ class JourneysController < ApplicationController
 
 		if (@date != "Not valid")
 			logger.info "getting data"
-			@journey = Journey.where("origin = ? AND destination = ? AND date = ? AND created_at > ?", params[:origin], params[:destination], date, Time.now-1.days).first()
+			old_journey = Journey.where("origin = ? AND destination = ? AND date = ? AND created_at > ? AND old_data IS NULL", params[:origin], params[:destination], date, Time.now-1.days).first()
 			#still need to set the user in here!
-			#and save it
-			if @journey.nil?
+			
+			if old_journey.nil?
 				@data = best_journey(orig,dest,date)
 				@journey = Journey.new
 				@journey.origin = params[:origin]
@@ -42,6 +42,9 @@ class JourneysController < ApplicationController
 				@journey.best_result = @data[0]
 				@journey.save
 			else
+				@journey = old_journey.dup
+				@journey.old_data = old_journey.created_at
+				@journey.save
 				@data = "Data Already Available"
 			end
 			logger.info @data
