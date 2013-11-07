@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 #make console output more readable
-gem 'quiet_assets', :group => :development
+gem 'quiet_assets'
 
-#there's a gem for that!  ->  Yes and it breaks everything!
-#gem 'google_directions'
+#there's a gem for that!  ->  Yes and it breaks everything! (only devise :] )
+#gem 'google-directions'
 
 #datepickers will be the death of me
 gem 'bootstrap-datepicker-rails'
