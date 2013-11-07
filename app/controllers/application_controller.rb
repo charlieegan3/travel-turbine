@@ -75,13 +75,8 @@ def bus(origin, destination, date)
 	duration_string = dur_string.split(',')
 	durations = Array.new
 	duration_string.each do |d|
-		if d.length < 4
-			hours = 0
-			mins = d[0,2]
-		else
-			hours = d[0, d.index(':')]
-			mins = d[d.index(':')+1, d.length]
-		end
+		hours = d[0, d.index(':')]
+		mins = d[d.index(':')+1, d.length]
 		if mins[0,1] == "0"
 			mins = mins[1,1]
 		end
