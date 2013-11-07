@@ -1,5 +1,0 @@
-e:  admin@traveller.com
-
-p:  password123
-
-
