@@ -1,25 +1,27 @@
 TravelPlanner::Application.routes.draw do
   
-  devise_for :admins
+
+  devise_for :admins#,  :controllers => { :registrations => "admins/add_admin" }
   devise_for :users
   resources :journeys
-
   root to: "static#index"
 
   get '/journey/new', to: 'journeys#new'    # For some reason "resources :journeys"  isn't activating the new method.
   get '/search', to: 'static#search'
 
-  get '/admins/add_admin', to: 'admins#add_admin'
-
   devise_scope :user do
     get 'users/sign_out', to: 'session#destroy'
+    get 'users/sign_in', to: 'session#new'
     # Don't need to define sign_in here, because it works already (unlike admin).
   end
 
   devise_scope :admin do 
-    get 'admins/sign_out', to: 'devise/sessions#destroy'
-    get 'admins/sign_in', to: 'devise/sessions#new'
+    get 'admins/sign_out', to: 'devise/session#destroy'
+    get 'admins/sign_in', to: 'devise/session#new'
+    get 'admins/add_admin', to: 'admins#add_admin' #devise/registrations#new
+    post 'admins/save_admin', to: 'admins#save_admin'
   end
+
   
 
   # The priority is based upon order of creation: first created -> highest priority.

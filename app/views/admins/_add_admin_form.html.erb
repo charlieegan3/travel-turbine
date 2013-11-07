@@ -1,0 +1,16 @@
+<%= form_for @admin, url: {action: "save_admin"} do |f| %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.hidden_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add admin" %>
+  </div>
+  
+<% end %>
