@@ -1,3 +1,5 @@
+require 'concerns/googledirections.rb'
+
 class JourneysController < ApplicationController
 
 	def new
