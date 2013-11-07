@@ -1,3 +1,4 @@
+<% if @date != "Not valid" %>
 <div class="panel panel-default">
   <div class="panel-heading">Summary
   </div>
@@ -109,6 +110,16 @@
   </div>
   </div>
 <% end %>
+<% else %>
+<div class="panel panel-default">
+          <div class="panel-heading">Oops!</div>
+          <div class="panel-body">
+            Either there are no results for your chosen date and journey or you picked an odd date. You'll just have to drive...😢 
+          </div>
+
+        </div>
+</div>
+<% end %>
 
 <div class="panel panel-default">
           <div class="panel-heading">Car</div>
@@ -118,6 +129,7 @@
         </div>
 </div>
 
+<% if @date != "Not valid" %>
 <div class="panel panel-default">
           <div class="panel-heading">Share</div>
           <div class="panel-body">
@@ -127,4 +139,4 @@
           </div>
         </div>
 </div>
-
+<% end %>
