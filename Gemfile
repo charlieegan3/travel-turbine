@@ -10,7 +10,7 @@ gem 'google_directions'
 gem 'bootstrap-datepicker-rails'
 
 # Devise for user accounts
-#gem 'devise'
+gem 'devise'
 
 # Bcrypt for password hashing (Devise uses it by default)
 gem 'bcrypt-ruby'
