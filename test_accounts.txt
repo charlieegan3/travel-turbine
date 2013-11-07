@@ -8,4 +8,8 @@ p:  helloworld123
 
 admin: 
 
+e:  da_admin@traveller.com
+
+p:  password123
+
 

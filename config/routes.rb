@@ -11,8 +11,14 @@ TravelPlanner::Application.routes.draw do
 
   devise_scope :user do
     get "sign_in", :to => "devise/sessions#new"
-    get "sign_out", :to => "devise/sessions#destroy"
+    get "/users/sign_out", :to => "devise/sessions#destroy"
     get "sign_up", :to => "devise/registrations#new"
+end
+
+  devise_scope :admin do
+    get 'sign_in', :to => 'devise/sessions#new'
+    get '/admins/sign_out', :to => 'devise/sessions#destroy'
+    get '/admins/add_admin', :to => 'devise/registrations#new'  # Actually add_admin method in admins_controller.rb
 end
 
 
