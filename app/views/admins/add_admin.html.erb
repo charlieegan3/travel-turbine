@@ -1,17 +1,7 @@
 <h1>Adding new admin </h1>
 <h3>-> Authenticated as: <%=current_admin.email%> </h3>
 
-<%# render 'add_admin_form' %> 
-<%#= form_for @admin, url: {action: "save_admin"} do |f| %>
-
-<form accept-charset="UTF-8" action="/admins/save_admin" method="post" class="nifty_form">
-  <p>Email: </p>
-  <input id="email" name="admin[email]" type="text" /> <br />
-  <p>Password</p>
-  <input id = "password" name="admin[password]" type="password" /> <br />
-  <input name="commit" type="submit" value="Add admin account" />
-</form>
-
+<%= render 'add_admin_form' %> 
 
 <h3> <%= link_to 'Back', :root %> </h3>
 

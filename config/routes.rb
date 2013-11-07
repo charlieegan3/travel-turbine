@@ -18,7 +18,7 @@ end
   devise_scope :admin do
     get 'sign_in', :to => 'devise/sessions#new'
     get '/admins/sign_out', :to => 'devise/sessions#destroy'
-    get '/admins/add_admin', :to => 'devise/registrations#new'  # Actually add_admin method in admins_controller.rb
+    get '/admins/add_admin', :to => 'admins#add_admin'
 end
 
 

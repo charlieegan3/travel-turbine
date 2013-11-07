@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   require 'open-uri'
 
+
 #make a request to national rail like: train("INV", "ABD", "211113")
 def train(origin, destination, date)
 	logger.info "checking trains"
