@@ -19,6 +19,7 @@
 
 
 //".newpage" is a class for any button that links to a different view (which sometimes takes a while to load on slow Heroku)
+/*
 $(document).ready(function() {
 
 	// Hide warning/alert backgrounds if they're not actually being displayed
@@ -42,6 +43,7 @@ $(document).ready(function() {
 	})
 
 })
+*/
 
 function getURLParameter(name) {
     return decodeURI(

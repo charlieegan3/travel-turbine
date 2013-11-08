@@ -19,6 +19,10 @@
 	<%= render "devise/shared/links" %>
 
 	<!-- Added by Dylan -->
-	<strong> <%= link_to 'Admin sign-in page (check your URL)', '/admins/sign_in' %> </strong> <br />
+  <% if request.original_url.include? 'users' %>
+	<strong> <%= link_to 'Admin sign-in page', '/admins/sign_in' %> </strong> <br />
+  <% else %>
+  <strong> <%= link_to 'User sign in page', '/users/sign_in' %> </strong> <br />
+  <% end %>
 
 </div>
