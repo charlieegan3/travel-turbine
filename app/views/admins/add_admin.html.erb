@@ -1,7 +1,13 @@
 <h1>Adding new admin </h1>
+
+<% if admin_signed_in? %>
 <strong>-> Authenticated as: <%=current_admin.email%> </strong>
 
 <%= render 'add_admin_form' %> 
+
+<% else %>
+<strong>This action will not work because it requires Admin rights.</strong>
+<% end %>
 
 <h3> <%= link_to 'Back', :root %> </h3>
 
