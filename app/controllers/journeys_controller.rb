@@ -196,8 +196,8 @@ class JourneysController < ApplicationController
 	def destroy
 		@journey = Journey.find(params[:id])
 		if @journey.owner == current_user.id
-			@journey.destroy
-			logger.info "it's been deleted"
+			@journey.hidden = true #means can still access as cached data to speed up searches of other users
+			@journey.save
 		elsif admin_session?
 			@journey.destroy
 		else

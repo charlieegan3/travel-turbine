@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131107134539) do
+ActiveRecord::Schema.define(version: 20131108103019) do
 
   create_table "admins", force: true do |t|
     t.datetime "created_at"
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 20131107134539) do
     t.datetime "updated_at"
     t.text     "best_result",  limit: 255
     t.string   "date"
-    t.string   "user"
     t.string   "old_data"
     t.integer  "owner"
+    t.boolean  "hidden"
   end
 
   create_table "locations", force: true do |t|
