@@ -1,6 +1,11 @@
+
 <div class="container" style="max-width: 300px;">
 	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-signin') do |f| %>
-		<h2 class="form-signin-heading">Sign in</h2>
+  <% if request.original_url.include? 'admins' %>
+		<h2 class="form-signin-heading">Admin Sign in</h2>
+  <% else %>
+    <h2 class="form-signin-heading">Sign in</h2>
+  <% end %>
   		<%= f.email_field :email, :autofocus => true, :class => 'form-control', :placeholder => 'Email' %><br/>
   		<%= f.password_field :password, :class => 'form-control', :placeholder => 'Password', :style => 'padding-top: 5px;' %>
   		<% if devise_mapping.rememberable? -%>
