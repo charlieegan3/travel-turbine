@@ -1,8 +1,12 @@
+#this code is taken directly from the google-directions-ruby https://github.com/joshcrews/google-directions-ruby/blob/master/lib/google_directions.rb
+#I've had to edit it so that it no longer needs extlib/hash as this, annoyingly, conflicts with devise.
+
 # encoding: UTF-8
 require 'cgi'
 require 'net/http'
 require 'open-uri'
 require 'nokogiri'
+#require 'extlib/hash' this line breaks devise
 
 class GoogleDirections
 

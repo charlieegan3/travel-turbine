@@ -1,5 +1,5 @@
 TravelPlanner::Application.routes.draw do
-  
+  get '/journeys', to: 'users#journeys'
   devise_for :admins, :controllers => { :registrations => "admins/registrations" } #swap out devise registrations controller for my one.
   devise_for :users
   resources :journeys

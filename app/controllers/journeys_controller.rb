@@ -118,13 +118,6 @@ class JourneysController < ApplicationController
 		@car_cost = @car_cost.to_s[0,@car_cost.to_s.index('.')+3] #have no idea why .round() isn't behaving!
 		#http://en.wikipedia.org/wiki/Fuel_economy_in_automobiles#Fuel_economy_standards_and_testing_procedures
 
-
-		# USER INFO -> Use devise helper to check if a user is signed in  (Work in Progress)
-		if user_signed_in?
-			@journey.user = current_user#.email?    # https://github.com/plataformatec/devise#controller-filters-and-helpers
-		else
-			#@journey.user = "anon"
-		end
 	end
 
 	def show
@@ -201,12 +194,18 @@ class JourneysController < ApplicationController
 	end
 
 	def destroy
-		if admin_session?
-			@journey = Journey.find(params[:id])
+		@journey = Journey.find(params[:id])
+		if @journey.owner == current_user.id
+			@journey.destroy
+			logger.info "it's been deleted"
+		elsif admin_session?
 			@journey.destroy
 		else
 			flash[:alert] = "You must have admin rights to delete journeys."
 		end
+		respond_to do |format|
+      		format.html { redirect_to '/journeys' }
+    	end
 	end
 
 end

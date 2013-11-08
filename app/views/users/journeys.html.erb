@@ -3,6 +3,7 @@
         <div class="panel-heading">Your Journey History
         </div>
         <div class="panel-body">
+        <p class="lead">These are all the journeys that you've searched for. Click <a href="/">here</a> to check out another option.</p>
           <table class="table table-condensed table-hover">
             <thead>
               <tr>
@@ -14,24 +15,19 @@
               </tr>
             </thead>
             <tbody>
+              <% @journeys.each do |j| %>
               <tr>
-                <td>Aberdeen</td>
-                <td>Inverness</td>
-                <td>21/21/13</td>
-                <td>about 1 hour ago</td>
+                <td><%= j.origin %>
+                <td><%= j.destination %>
+                <td><%= j.date %>
+                <td><%= distance_of_time_in_words(j.created_at, Time.now) %>
                 <td>
-                  ✖︎ &nbsp; ➜
+                <%= link_to '✖︎', j,
+                    :method=>:delete, :class=>:destroy %>
+                    <%= link_to '➜', journey_path(j) %>
                 </td>
               </tr>
-              <tr>
-                <td>Aberdeen</td>
-                <td>Inverness</td>
-                <td>21/21/13</td>
-                <td>about 1 hour ago</td>
-                <td>
-                  ✖︎ &nbsp; ➜
-                </td>
-              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>

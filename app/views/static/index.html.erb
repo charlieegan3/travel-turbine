@@ -5,7 +5,7 @@
           <li><a href="/users/sign_up" class="topbar_link">Sign Up!</a></li>
           <li><a href="/users/sign_in" class="topbar_link">Log in!</a></li>
         <% elsif current_user %>
-        <li>You are signed in as: <br /> <strong> <%= current_user.email %> </strong> </li>
+        <li>You are signed in as: <br /> <strong> <a href="/journeys"><%= current_user.email %></a> </strong> </li>
           <li><a href="/users/sign_out" class="topbar_link">Log out!</a></li>
         <% else %> 
           <li>You are signed in as: <br /> <strong> <%= current_admin.email %> [ADMIN] </strong> </li>
