@@ -18,8 +18,9 @@ end
     get 'sign_in', :to => 'devise/sessions#new'
     get '/admins/sign_out', :to => 'devise/sessions#destroy'
     get '/admins/add_admin', :to => 'admins#add_admin'
-    post '/admins', :to => "admins#save_admin"
+    post '/admins/add', :to => "admins#save_admin"
 end
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

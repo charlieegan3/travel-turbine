@@ -13,3 +13,8 @@ e:  da_admin@traveller.com
 p:  password123
 
 
+e:  admin2@traveller.com
+
+p:  wordpass
+
+
