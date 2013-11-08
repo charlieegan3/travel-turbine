@@ -3,6 +3,10 @@
         <div class="panel-heading">Your Journey History
         </div>
         <div class="panel-body">
+
+        <% if @journeys.count() == 0 %>
+          <p class="lead">You don't currently have any journeys. Click <a href="/">here</a> to search for one.</p>
+        <% else %>
         <p class="lead">These are all the journeys that you've searched for. Click <a href="/">here</a> to check out another option.</p>
           <table class="table table-condensed table-hover">
             <thead>
@@ -20,7 +24,7 @@
                 <td><%= j.origin %>
                 <td><%= j.destination %>
                 <td><%= j.date %>
-                <td><%= distance_of_time_in_words(j.created_at, Time.now) %>
+                <td><%= distance_of_time_in_words(j.created_at, Time.now) %> ago
                 <td>
                 <%= link_to '✖︎', j,
                     :method=>:delete, :class=>:destroy %>
@@ -30,9 +34,10 @@
               <% end %>
             </tbody>
           </table>
+        <% end %>
         </div>
         <div class="panel-footer">
-          <p class="text-muted">Journey data is not updated, to get the latest data please query the journey again from the homepage.</p>
+          <p class="text-muted">Journey data is not updated automatically, to get the latest data please query the journey again from the homepage.</p>
         </div>
       </div>
     </div>
