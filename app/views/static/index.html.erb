@@ -22,6 +22,7 @@
         </div>
         <h1><%= @project_name %></h1>
         <p class="lead">Select your search criteria below and we'll do the rest.</p>
+              <a id="swapbutton" class="btn btn-default btm-sm" style="width:30px; padding: 0px;">⇄<br></a>
         <div class="row">
           <div class="col-md-5">
             <select id="originselect" class="form-control">
@@ -102,6 +103,11 @@
         $("#error").html("Error parsing request. The developer responsible has been fired.");
       }
 		})
+    $("#swapbutton").click(function() {
+        var temp = document.getElementById("originselect").value;
+        document.getElementById("originselect").value = document.getElementById("destinationselect").value;
+        document.getElementById("destinationselect").value = temp;
+    })
 </script>
 
 
