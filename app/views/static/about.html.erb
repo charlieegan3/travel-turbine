@@ -1,0 +1,69 @@
+
+    <div class="container">
+      <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li><a href="/" class="topbar_link">Home</a><li>
+      </ul>
+      </div>
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1>All you need to know</h1>
+        <p class="lead"></p>
+        <p></p>
+        <p>Here's a few things that you might want be interested to know about Travel Turbine.</p>
+      </div>
+      <h2>Sources</h2>
+      <p>Travel Turbine doesn't actually know anything, it's just a clever tool for checking multiple sites at once. We wanted to make comparing different travel options around the UK easier and Travel Turbine is our best effort.</p>
+      <p>Below are the three services that provide the data to Travel Turbine. We are very happy that their sites make this possible, Travel Turbine wouldn't be what it is without them.</p>
+      <div class="row">
+        <div class="col-md-11 col-lg-4">
+          <p></p>
+        </div>
+      </div>
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <img src="http://upload.wikimedia.org/wikipedia/en/d/da/NationalRail.svg" width="100%" height="90">
+          <p>National Rail is used to source all the train journey data. It was chosen due to it's ability to book trains over multiple operators.</p>
+          <p></p>
+        </div>
+        <div class="col-md-4">
+          <img src="http://www.openmicsuk.co.uk/resources/homepage_megabus%5B1%5D.jpg" width="100%" height="90">
+          <p>Megabus, being the largest coach operator was the clear choice for the bus journey data. Bus options regularly come out as the best option due to very good prices.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="http://ecomtim.ro/2012/wp-content/uploads/2011/12/tripsta-logo-source.jpg" width="100%" height="90">
+          <p>tripsta was chosen for it's excellent prices and website. Plane options on average win over longer journey's due to the reduced duration.</p>
+        </div>
+      </div>
+      <!-- Site footer -->
+      <p>We refer all our users to these sites to continue with proceedings - we do not handle user payments and would like to think that we boost, if slightly, traffic to these sites.</p>
+      <h2>Method</h2>
+      <p>The application takes in a single query, e.g Aberdeen to London on the 21/11/13 and uses that information as parameters to search 3 travel websites and generate driving statistics. Searches can take up to 12 seconds to complete.</p>
+      <p>The best option overall and best of each method are calculated in the same way.</p>
+      <ol>
+        <div>
+          <span style="line-height: 1.428571429;">1. Given a list of prices and durations the averages are calculated.</span><br></div>
+        <div>2. Then each result in the list is given a score based on it's relation to the mean. Price and duration are equally weighted.
+        </div>
+        <div>3. The element with the lowest score wins, as it is the one that is the largest amount below average.
+        </div>
+      </ol>
+      <h2>Creators</h2>
+      <p>Travel Turbine was created by Dylan Hamming and Charlie Egan. (LINKS?)</p>
+      <h2>Thanks &amp; Sources</h2>
+      <ul>
+        <li>Sources: National Rail, Megabus &amp; Tripsta for making their data available.</li>
+        <li>StackOverflow.com and it's many rails experts</li>
+        <li>
+          <a href="https://github.com/sparklemotion/nokogiri">https://github.com/sparklemotion/nokogiri</a><br></li>
+        <li>
+          <a href="https://github.com/plataformatec/devise">https://github.com/plataformatec/devise</a><br></li>
+        <li>
+          <a href="https://github.com/joshcrews/google-directions-ruby">https://github.com/joshcrews/google-directions-ruby</a> (Though not in Gemfile)<br></li>
+        <li>
+          <a href="https://github.com/jtescher/descriptive-statistics">https://github.com/jtescher/descriptive-statistics</a><br></li>
+      </ul>
+      <h2>Source</h2>
+      <p>Links to Public Repository</p>
+    </div>

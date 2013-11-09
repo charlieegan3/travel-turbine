@@ -3,7 +3,7 @@
 #### Introduction
 Travel planner (and other names) is a web app that allows users to compare one-way journeys between British cities and towns.
 
-The application takes in a single query, e.g Aberdeen to London on the 21/11/13 and uses that information as parameters to search 3 travel websites and generate driving statisitcs. Searches can take up to 12 seconds to complete.
+The application takes in a single query, e.g Aberdeen to London on the 21/11/13 and uses that information as parameters to search 3 travel websites and generate driving statistics. Searches can take up to 12 seconds to complete.
 
 #### Setup
 
@@ -48,6 +48,6 @@ The best option overall and best of each method are calculated in the same way.
 
 1. Given a list of prices and durations the averages are calculated.
 2. Then each result in the list is given a score based on it's relation to the mean. Price and duration are equally weighted.
-3. The element with the lowest score wins, as it is the one that is the largest ammount below average.
+3. The element with the lowest score wins, as it is the one that is the largest amount below average.
 
 

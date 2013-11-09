@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'quiet_assets'
 
 #there's a gem for that!  ->  Yes and it breaks everything! (only devise :] )
-#gem 'google-directions'
+#gem 'google-directions-ruby'
 
 #datepickers will be the death of me
 gem 'bootstrap-datepicker-rails'

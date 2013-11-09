@@ -1,9 +1,11 @@
 TravelPlanner::Application.routes.draw do
+  root to: "static#index"
   get '/journeys', to: 'users#journeys'
+  get 'about', to: 'static#about'
+
   devise_for :admins, :controllers => { :registrations => "admins/registrations" } #swap out devise registrations controller for my one.
   devise_for :users
   resources :journeys
-  root to: "static#index"
 
   get '/journey/new', to: 'journeys#new'    # For some reason "resources :journeys"  isn't activating the new method.
   get '/search', to: 'static#search'
@@ -12,14 +14,14 @@ TravelPlanner::Application.routes.draw do
     get "sign_in", :to => "devise/sessions#new"
     get "/users/sign_out", :to => "devise/sessions#destroy"
     get "sign_up", :to => "devise/registrations#new"
-end
+  end
 
   devise_scope :admin do
     get 'sign_in', :to => 'devise/sessions#new'
     get '/admins/sign_out', :to => 'devise/sessions#destroy'
     get '/admins/add_admin', :to => 'admins#add_admin'
     post '/admins/add', :to => "admins#save_admin"
-end
+  end
 
 
 
