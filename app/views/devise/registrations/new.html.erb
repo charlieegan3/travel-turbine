@@ -1,14 +1,13 @@
 <div class="container" style="max-width: 300px;">
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class => 'form-signin') do |f| %>
 		<h2 class="form-signin-heading">Sign Up</h2>
-		<p>Password rules:  at least 6 characters long, alphanumeric.</p>
   		<%= f.email_field :email, :autofocus => true, :class => 'form-control', :placeholder => 'Email' %><br/>
-  		<%= f.password_field :password, :class => 'form-control', :placeholder => 'Password' %><br/>
-  		<%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Password' %><br/>
+  		<p style="font-size: 12px; margin-bottom: -2px; margin-left: 25px;">Six characters long, alphanumeric only.</p>
+  		<%= f.password_field :password, :class => 'form-control', :placeholder => 'Password' %>
+  		<%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Verify Password', :style => 'margin-top: 5px;' %><br/>
   		<div><%= f.submit "Sign Up", :class => 'btn btn-lg btn-primary btn-block'%></div><br/>
 	<% end %>
 
 	<%= render "devise/shared/links" %>
-	<h3><%= link_to 'Back', :root %></h3>
 </div>
 
