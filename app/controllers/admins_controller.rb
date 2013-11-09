@@ -22,7 +22,6 @@ class AdminsController < Devise::RegistrationsController#ApplicationController
     	if resource.save
     	  	if resource.active_for_authentication?
 		        set_flash_message :notice, :signed_up if is_flashing_format?
-        		sign_up(resource_name, resource)
         		respond_with resource, :location => root_path  # Do NOT sign in after registration (already signed in as admin)
       		else
 	        	set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
