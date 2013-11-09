@@ -24,8 +24,9 @@
         <p class="lead">Select your search criteria below and we'll do the rest.</p>
               <a id="swapbutton" class="btn btn-default btm-sm" style="width:30px; padding: 0px;">⇄<br></a>
         <div class="row">
-          <div class="col-md-5">
-            <select id="originselect" class="form-control">
+        <div class="col-md-3"></div>
+          <div class="col-md-2">
+            <select id="originselect" dir="rtl" class="form-control journeyselect">
               <% @locations.each do |l|%>
               <option><%= l.name %></option>
               <% end %>
@@ -34,13 +35,14 @@
           <div class="col-md-2">
             <p>traveling to<br></p>
           </div>
-          <div class="col-md-5">
-            <select id="destinationselect" class="form-control">
+          <div class="col-md-2">
+            <select id="destinationselect" class="form-control journeyselect destination">
               <% @locations.each do |l|%>
               <option><%= l.name %></option>
               <% end %>
             </select>
           </div>
+          <div class="col-md-3"></div>
         </div>
         <div class="row">
           <div class="col-md-5"></div>
@@ -104,6 +106,8 @@
       }
 		})
     $("#swapbutton").click(function() {
+        $( "#originselect" ).toggleClass( "destination");
+        $( "#destinationselect" ).toggleClass( "destination");
         var temp = document.getElementById("originselect").value;
         document.getElementById("originselect").value = document.getElementById("destinationselect").value;
         document.getElementById("destinationselect").value = temp;
