@@ -5,6 +5,10 @@ e:  reguser@hello.com
 p:  helloworld123
 
 
+e: john@smith.com
+
+p: abcpassword123
+
 
 admin: 
 
