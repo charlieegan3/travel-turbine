@@ -1,7 +1,8 @@
 
 <div class="container">
         <div class="header">
-        <ul class="nav nav-pills pull-right">
+          <h3><%= link_to 'Home', :root %></h3>
+        <ul class="nav nav-pills pull-right">  
         <% if current_user.nil? and current_admin.nil? %>    <!-- if curren_user.nil? -->
           <li><a href="/admins/sign_in" class="topbar_link">Admin sign in</a></li>
           <li><a href="/users/sign_up" class="topbar_link">Sign Up!</a></li>
