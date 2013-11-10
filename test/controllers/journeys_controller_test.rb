@@ -1,15 +1,13 @@
 require 'test_helper'
 
 class JourneysControllerTest < ActionController::TestCase
-   test "TEST NOT NIL" do
-   	puts "i am a test"
+   test "Fixtures should generate some test journeys" do
      @journey = Journey.all
-     assert @journey.nil? == false
+     assert @journey.nil? == false, "There are no journeys in the test database (see your fixtures)."
    end
 
-   test "journeys with aberdeen" do
-   	puts "There are journeys with origin = aberdeen in the DB"
-   	assert Journey.find_by_origin("Aberdeen").nil? == false
+   	test "Journey attributes can't be null" do
+   		@journey = Journey.new
+   		assert !@journey.save, "Journey with null attributes was able to be saved."
    	end
-
 end
