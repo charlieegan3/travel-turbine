@@ -5,11 +5,11 @@ one:
   destination: MyString
   train_result: MyString
   bus_result: MyString
-  plane: MyString
+  plane_result: MyString
 
 two:
   origin: MyString
   destination: MyString
   train_result: MyString
   bus_result: MyString
-  plane: MyString
+  plane_result: MyString
