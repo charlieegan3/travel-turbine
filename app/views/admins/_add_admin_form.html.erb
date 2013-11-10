@@ -1,22 +1,15 @@
-<h3>Enter the details for the new account: </h3>
 
-<!--  (resource, :as => resource_name, :url => admin_registration_path(resource_name))   -->
+<h2 class="form-signin-heading">Create New Admin</h2>
 
 <%= form_for(resource, :as => resource_name, :url => '/admins/add') do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= f.email_field :email, :autofocus => true, :class => 'form-control', :placeholder => 'Email', :style => 'margin-top: 5px;' %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password, :class => 'form-control', :placeholder => 'Password', :style => 'margin-top: 5px;' %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => 'Verify Password', :style => 'margin-top: 5px;' %>
 
-  <div><%= f.submit "Sign up" %></div>
+  <%= f.submit "Sign up", :class => 'btn btn-lg btn-primary btn-block' %>
 <% end %>
 
-<!-- 
-THIS WAS COPIED AND PASTED FROM /views/devise/registrations/new.html.erb
--->
