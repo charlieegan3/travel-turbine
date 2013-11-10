@@ -21,7 +21,7 @@
         <div style class="alert alert-dismissable visible-xs alert-warning">
           <b>Warning! </b>We've noticed you're using a mobile phone, if we had an app on the app store we'd have a link here!
         </div>
-        <h1><%= @project_name %></h1>
+        <h1>Travel Turbine</h1>
         <p class="lead">Select your search criteria below and we'll do the rest.</p>
               <a id="swapbutton" class="btn btn-default btm-sm" style="width:30px; padding: 0px;">⇄<br></a>
         <div class="row">
@@ -60,7 +60,7 @@
 				});
 			  })
 			</script>
-            <a id="searchbutton" class="btn btn-primary btn-sm" style="margin-top: 5px;">Search</a>
+            <a id="searchbutton" class="btn btn-primary btn-sm" style="margin-top: 5px;"><%= @search_verb %></a>
           </div>
           <div class="col-md-5"></div>
         </div>
@@ -98,7 +98,7 @@
 		else
   		{
   			$( "#error" ).hide();
-  			$("#results").html('<img src="http://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif">')
+  			$("#results").html('<p style="font-size: x-small;">Queries can take up to 15 seconds to complete, please be patient!</p><img src="http://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif">')
   			var query = "journey/new?origin="+origin+"&destination="+destination+"&date="+date
   		}
       if ($("#results").load(query)) {
