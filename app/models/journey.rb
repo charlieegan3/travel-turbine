@@ -4,4 +4,6 @@ class Journey < ActiveRecord::Base
 	serialize :plane_result,Array
 	serialize :best_result,Array
 	belongs_to :user
+
+	validates_presence_of :origin, :destination, :date
 end
