@@ -134,7 +134,7 @@
           <div class="panel-heading">Share</div>
           <div class="panel-body">
             <%= link_to "Permalink", @journey %><br/>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="'<%= journey_path(@journey) %>'" data-text="'<%= @journey.origin %> to <%= @journey.destination %> via Travel Turbine http://www.our.heroku.path<%= journey_path(@journey) %>'">Tweet</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="'<%= journey_path(@journey) %>'" data-text="'<%= @journey.origin %> to <%= @journey.destination %> via Travel Turbine http://travel-turbine.herokuapp.com<%= journey_path(@journey) %>'">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
           </div>
         </div>
