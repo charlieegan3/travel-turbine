@@ -117,7 +117,6 @@ class JourneysController < ApplicationController
 		@car_cost = (((@car_miles*1.609)/100)*5*1.3070*1.3).round(3) #1.3 = for driver ineficency
 		@car_cost = @car_cost.to_s[0,@car_cost.to_s.index('.')+3] #have no idea why .round() isn't behaving!
 		#http://en.wikipedia.org/wiki/Fuel_economy_in_automobiles#Fuel_economy_standards_and_testing_procedures
-
 	end
 
 	def show
