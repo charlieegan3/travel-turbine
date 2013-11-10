@@ -1,4 +1,5 @@
-<h1>Adding new admin </h1>
+
+<div class="container" style="max-width: 300px;">
 
 <% if admin_signed_in? %>
 <strong>-> Authenticated as: <%=current_admin.email%> </strong>
@@ -6,8 +7,9 @@
 <%= render 'add_admin_form' %> 
 
 <% else %>
-<strong>This action will not work because it requires Admin rights.</strong>
+<strong>This action will not allowed because it requires Admin rights.</strong>
 <% end %>
 
-<h3> <%= link_to 'Back', :root %> </h3>
+<h3> <%= link_to 'Back', :root, :class => "btn btn-default btn-block", :style => 'margin-top: 5px;' %> </h3>
 
+</div>

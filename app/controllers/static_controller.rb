@@ -1,9 +1,7 @@
 class StaticController < ApplicationController
 	def index
-		#since when did programmers have to choose the name anyway!
-		nouns = ["Quest" ,"Travel", "Trip", "Trek", "Expedition", "Excursion", "Outing", "Foray", "Cruise", "Vacation", "Holiday", "Adventure", "Passage", "Quest", "Epic Journey", "Journey"]
-		actions = ["Counter", "Quantifier", "Check", "Engine", "Turbine", "Checker", "Explorer", "Inquirer", "Detective", "Investigator"]
-		@project_name = nouns.sample + " " + actions.sample
+		actions = ["Search", "Find", "Check", "Hunt", "Compare", "Look", "Sift", "Seek", "Scan", "Scour", "Frisk", "Forage", "Pry", "Rake", "Prospect", "Scuntinize", "Rummage", "Detect", "Spot", "Uncover", "Unearth", "Pinpoint", "Browse", "Skim", "Sweep", "Study", "Go!", "Depart", "Travel", "Cruise" ]
+		@search_verb = actions.sample
 		@locations = Location.all.order("name ASC")
 	end
 end
