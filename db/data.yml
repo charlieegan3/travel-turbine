@@ -1,0 +1,12 @@
+
+---
+locations:
+  columns:
+  - id
+  - name
+  - bus
+  - station
+  - airport
+  - created_at
+  - updated_at
+  records: 
