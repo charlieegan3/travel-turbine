@@ -1,0 +1,1 @@
+User.create(:id => 1, :email => "reguser@hello.com", :encrypted_password => "$2a$10$M52EpykdvxQbqSwhfAvEc.CJOeqQL84EGfAXH0EIkOkLDsZUq6MUG", :sign_in_count => 5, :current_sign_in_at => Sun, 10 Nov 2013 13:48:48 UTC +00:00, :last_sign_in_at => Sun, 10 Nov 2013 13:36:53 UTC +00:00, :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1")

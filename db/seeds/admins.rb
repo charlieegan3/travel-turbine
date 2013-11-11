@@ -1,0 +1,1 @@
+Admin.create(:id => 1, :email => "da_admin@traveller.com", :encrypted_password => "$2a$10$KlfmoTFdFS9Y8Vr7hZuKOe8mFw4Azk.C7RG28.AXdeBu5wAZWrNMa", :sign_in_count => 14, :current_sign_in_at => Sun, 10 Nov 2013 14:03:54 UTC +00:00, :last_sign_in_at => Sun, 10 Nov 2013 14:02:59 UTC +00:00, :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1")
