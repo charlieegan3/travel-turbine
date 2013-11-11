@@ -15,7 +15,7 @@ TravelPlanner::Application.configure do
   config.action_controller.perform_caching = true
 
   # URL Options for devise gem to work
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'http://travel-turbine.herokuapp.com/' }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
