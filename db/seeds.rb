@@ -39,8 +39,10 @@ Location.create(:id => 26, :name => "Blackpool", :bus => "115", :station => "Bla
 Location.create(:id => 27, :name => "Chester", :bus => "130", :station => "CTR", :airport => "CEG")
 
 # USERS/ADMINS
-User.create(:id => 1, :email => "reguser@hello.com", :encrypted_password => "$2a$10$M52EpykdvxQbqSwhfAvEc.CJOeqQL84EGfAXH0EIkOkLDsZUq6MUG", :sign_in_count => 5)
-Admin.create(:id => 1, :email => "da_admin@traveller.com", :encrypted_password => "$2a$10$KlfmoTFdFS9Y8Vr7hZuKOe8mFw4Azk.C7RG28.AXdeBu5wAZWrNMa", :sign_in_count => 14)
+#User.create(:id => 1, :email => "reguser@hello.com", :encrypted_password => "$2a$10$M52EpykdvxQbqSwhfAvEc.CJOeqQL84EGfAXH0EIkOkLDsZUq6MUG", :sign_in_count => 5)
+#Admin.create(:id => 1, :email => "da_admin@traveller.com", :encrypted_password => "$2a$10$KlfmoTFdFS9Y8Vr7hZuKOe8mFw4Azk.C7RG28.AXdeBu5wAZWrNMa", :sign_in_count => 14)
+User.create(:id => 1, :email => "reguser@hello.com", :password => "helloworld123", :password_confirmation => "helloworld123", :sign_in_count => 5)
+Admin.create(:id => 1, :email => "da_admin@traveller.com", :password => "password123", :password_confirmation => "password123", :sign_in_count => 14)
 
 # JOURNEYS
 Journey.create(:id => 1, :origin => "London", :destination => "Cambridge", :train_result => [[["19.90", 70], ["22.00", 81], ["22.00", 48], ["19.90", 83], ["22.00", 46]], [0.87, 4], "http://ojp.nationalrail.co.uk/service/timesandfares/London/CBG/141113/0900/dep"], :bus_result => [[], nil, "https://uk.megabus.com/JourneyResults.aspx?originCode=56&destinationCode=17&outboundDepartureDate=14%2f11%2f2013&passengerCount=1&transportType=-1"], :plane_result => [[], nil, "http://www.tripsta.co.uk/airline-tickets/results?dep=LON&arr=CBG&passengersAdult=1&passengersChild=0&passengersInfant=0&class=&airlineCode=&directFlightsOnly=0&extendedDates=0&isRoundtrip=0&obDate=14%2f11%2f2013&obTime=&ibDate=&ibTime="], :best_result => [["22.00", 46], "train"], :date => "141113", :owner => 1)
