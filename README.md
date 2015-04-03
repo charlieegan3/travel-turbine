@@ -1,3 +1,5 @@
+Disclaimer: this was our first 'real' rails app.
+
 # Travel Planner
 
 #### Introduction
